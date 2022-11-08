@@ -1,0 +1,11 @@
+---
+deploy:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - npm install
+    - npm run delete
+    - npm run start
+  stage: deploy
+  tags:
+    - ex-app
