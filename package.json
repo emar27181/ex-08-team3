@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@markuplint/ejs-parser": "^2.2.2",
+    "esbuild": "^0.15.14",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
