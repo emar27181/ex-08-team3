@@ -9,3 +9,23 @@ deploy:
   stage: deploy
   tags:
     - ex-app
+
+stages:
+  - lint
+  - test
+
+lint-job:
+  script:
+    - npm install
+    - npm run lint
+  stage: lint
+  tags:
+    - ex-runner
+
+test-job:
+  script:
+    - npm install
+    - npm run test
+  stage: test
+  tags:
+    - ex-runner
