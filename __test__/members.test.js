@@ -1,4 +1,3 @@
-// const { describe } = require("pm2");
 const Member = require("../src/db/members.model");
 // const Channel = require("../src/db/channels.model");
 // const Employee = require("../src/db/employees.model");
@@ -11,7 +10,7 @@ describe("database: members table test", () => {
     // await Employee.sync({ force: true });
   });
 
-  describe("create test", () => {
+  describe("database: create test", () => {
     it("メンバーの追加", async () => {
       const member = await Member.create({
         channel_id: 1,
@@ -22,7 +21,7 @@ describe("database: members table test", () => {
     });
   });
 
-  describe("find test", () => {
+  describe("database: find test", () => {
     it("特定のemployeeの取り出し", async () => {
       await Member.create({
         channel_id: 1,
@@ -89,7 +88,8 @@ describe("database: members table test", () => {
       expect(total).toBe(3);
     });
   });
-  describe("delete test", () => {
+  
+  describe("database: delete test", () => {
     it("メンバーの削除", async () => {
       await Member.create({
         channel_id: 1,
