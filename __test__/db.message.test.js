@@ -48,48 +48,87 @@ describe("messages table test", () => {
       const end = new Date();
       expect(now - message.time <= end - begin).toStrictEqual(true);
     });
+
+    it("primary key test", async () => {
+      expect.assertions(1);
+      await Message.create({
+        message_id: 12345678,
+        content: "primary key test 1-1",
+        time: new Date(),
+        channel_id: 23456789,
+        employee_id: 34567890,
+      });
+      await expect(() =>
+        Message.create({
+          message_id: 12345678,
+          content: "primary key test 1-2",
+          time: new Date(),
+          channel_id: 45678901,
+          employee_id: 56789012,
+        })
+      ).rejects.toThrow(Error);
+    });
+
+    it("auto increment test", async () => {
+      expect.assertions(2);
+      await Message.create({
+        content: "auto increment test 1-1",
+        time: new Date(),
+        channel_id: 23456789,
+        employee_id: 34567890,
+      });
+      await Message.create({
+        content: "auto increment test 1-2",
+        time: new Date(),
+        channel_id: 45678901,
+        employee_id: 56789012,
+      });
+      const messages = await Message.findAll();
+      expect(messages[0].message_id).toStrictEqual(1);
+      expect(messages[1].message_id).toStrictEqual(2);
+    });
   });
 
   describe("find test", () => {
     it("findall message", async () => {
       expect.assertions(5);
       await Message.create({
-        message_id: 13579086,
+        message_id: 12345678,
         content: "find test 1-1",
         time: new Date(2022, 11, 20, 23, 0),
-        channel_id: 35790864,
-        employee_id: 57908642,
-      });
-      await Message.create({
-        message_id: 12345678,
-        content: "find test 1-2",
-        time: new Date(2022, 11, 19, 9, 30),
         channel_id: 23456789,
         employee_id: 34567890,
       });
+      await Message.create({
+        message_id: 13579086,
+        content: "find test 1-2",
+        time: new Date(2022, 11, 19, 9, 30),
+        channel_id: 35790864,
+        employee_id: 57908642,
+      });
       const messages = await Message.findAll();
-      expect(messages[0].message_id).toStrictEqual(13579086);
+      expect(messages[0].message_id).toStrictEqual(12345678);
       expect(messages[0].content).toStrictEqual("find test 1-1");
       expect(messages[0].time).toStrictEqual(new Date(2022, 11, 20, 23, 0));
-      expect(messages[0].channel_id).toStrictEqual(35790864);
-      expect(messages[0].employee_id).toStrictEqual(57908642);
+      expect(messages[0].channel_id).toStrictEqual(23456789);
+      expect(messages[0].employee_id).toStrictEqual(34567890);
     });
 
     it("count message", async () => {
       expect.assertions(1);
       await Message.create({
-        message_id: 13579086,
+        message_id: 12345678,
         content: "find test 1-1",
         time: new Date(2022, 11, 20, 23, 0),
-        channel_id: 35790864,
-        employee_id: 57908642,
-      });
-      await Message.create({
-        message_id: 12345678,
-        content: "find test 1-2",
-        time: new Date(2022, 11, 19, 9, 30),
         channel_id: 23456789,
         employee_id: 34567890,
+      });
+      await Message.create({
+        message_id: 13579086,
+        content: "find test 1-2",
+        time: new Date(2022, 11, 19, 9, 30),
+        channel_id: 35790864,
+        employee_id: 57908642,
       });
       const count = await Message.count();
       expect(count).toStrictEqual(2);
