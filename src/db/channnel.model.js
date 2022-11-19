@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("./connect");
 
 const Channel = sequelize.define("Channel", {
-  channle_id: {
+  channel_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
