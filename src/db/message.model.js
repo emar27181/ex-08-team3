@@ -4,6 +4,8 @@ const sequelize = require("./connect");
 const Message = sequelize.define("Message", {
   message_id: {
     type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
   },
   content: {
     type: DataTypes.TEXT,
