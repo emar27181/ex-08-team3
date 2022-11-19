@@ -30,4 +30,15 @@ describe("position test", () => {
     });
   });
 
+  describe("find test", () => {
+    it("ポジションの取り出し", async () => {
+      await Position.create({
+        position_id: 2,
+        position: "平社員",
+      });
+      const positions = await Position.findAll();
+      expect(positions[0].position_id).toBe(2);
+      expect(positions[0].position).toBe("平社員");
+    });
+  });
 });
