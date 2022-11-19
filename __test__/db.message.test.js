@@ -23,6 +23,31 @@ describe("messages table test", () => {
       expect(message.channel_id).toStrictEqual(23456789);
       expect(message.employee_id).toStrictEqual(34567890);
     });
+
+    it("default content", async () => {
+      expect.assertions(1);
+      const message = await Message.create({
+        message_id: 12345678,
+        time: new Date(2022, 11, 19, 9, 30),
+        channel_id: 23456789,
+        employee_id: 34567890,
+      });
+      expect(message.content).toStrictEqual("no content");
+    });
+
+    it("default time", async () => {
+      expect.assertions(1);
+      const begin = new Date();
+      const message = await Message.create({
+        message_id: 12345678,
+        content: "create test 2",
+        channel_id: 23456789,
+        employee_id: 34567890,
+      });
+      const now = new Date();
+      const end = new Date();
+      expect(now - message.time <= end - begin).toStrictEqual(true);
+    });
   });
 
   describe("find test", () => {
