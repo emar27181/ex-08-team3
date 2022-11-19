@@ -114,4 +114,48 @@ describe("database: channel table test", () => {
       expect(count).toBe(2);
     });
   });
+
+  describe("update test", () => {
+    it("channelのnameを変更", async () => {
+      await Channel.create({
+        name: "hogehoge",
+      });
+      await Channel.update(
+        { name: "hogehogehoge" },
+        {
+          where: {
+            channel_id: 1,
+          },
+        }
+      );
+      const channels = await Channel.findAll();
+      expect(channels[0].name).toBe("hogehogehoge");
+    });
+    it("channelのnameを指定してアップデート（複数存在する状態で）", async () => {
+      await Channel.create({
+        name: "hoge",
+      });
+      await Channel.create({
+        name: "fuga",
+      });
+      await Channel.create({
+        name: "hoge",
+      });
+      await Channel.update(
+        { name: "hogege" },
+        {
+          where: {
+            name: "hoge",
+          },
+        }
+      );
+      const channels = await Channel.findAll({
+        where: {
+          name: "hogege",
+        },
+      });
+      expect(channels[0].channel_id).toBe(1);
+      expect(channels[1].channel_id).toBe(3);
+    });
+  });
 });
