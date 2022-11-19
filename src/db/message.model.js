@@ -2,11 +2,25 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("./connect");
 
 const Message = sequelize.define("Message", {
-  message_id: DataTypes.INTEGER,
-  content: DataTypes.TEXT,
-  time: DataTypes.DATE,
-  channel_id: DataTypes.INTEGER,
-  employee_id: DataTypes.INTEGER,
+  message_id: {
+    type: DataTypes.INTEGER,
+  },
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no content",
+  },
+  time: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
+  },
+  channel_id: {
+    type: DataTypes.INTEGER,
+  },
+  employee_id: {
+    type: DataTypes.INTEGER,
+  },
 });
 
 module.exports = Message;
