@@ -1,10 +1,32 @@
 ---
+stages:
+  - lint
+  - test
+  - deploy
+
+lint-job:
+  script:
+    - npm install
+    - npm run lint
+  stage: lint
+  tags:
+    - ex-runner
+
+test-job:
+  script:
+    - npm install
+    - npm run test
+  stage: test
+  tags:
+    - ex-runner
+
 deploy:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
     - npm install
     - npm run delete
+    - npm run build
     - npm run start
   stage: deploy
   tags:

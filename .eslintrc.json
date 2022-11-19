@@ -1,36 +1,35 @@
 {
-    "env": {
-      "browser": true,
-      "commonjs": true,
-      "es2021": true,
-      "jest/globals": true,
-      "node": true
-    },
-    "extends": ["standard", "eslint:all", "prettier"],
-    "overrides": [
-      {
-        "extends": ["plugin:jest/recommended"],
-        "files": ["__test__/**"],
-        "plugins": ["jest"]
-      }
-    ],
-    "parserOptions": {
-      "ecmaVersion": "latest"
-    },
-    "rules": {
-      "sort-vars": "off",
-      "func-names": "off",
-      "no-magic-numbers": "off",
-      "max-statements": "off",
-      "max-lines-per-function": "off",
-      "one-var": "off",
-      "no-console": "off",
-      "sort-keys": "off",
-      "quotes": ["error", "double", { "avoidEscape": true }],
-      "id-length": "off",
-      "no-plusplus": "off",
-      "capitalized-comments": "off",
-      "multiline-comment-style": "off"
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": ["standard", "eslint:all", "prettier"],
+  "overrides": [
+    {
+      "extends": ["plugin:jest/recommended"],
+      "files": ["__test__/**"],
+      "plugins": ["jest"]
     }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "sort-vars": "off",
+    "func-names": "off",
+    "no-magic-numbers": "off",
+    "max-statements": "off",
+    "max-lines-per-function": "off",
+    "one-var": "off",
+    "no-console": "off",
+    "sort-keys": "off",
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "id-length": "off",
+    "no-plusplus": "off",
+    "capitalized-comments": "off",
+    "multiline-comment-style": "off"
   }
-  
+}

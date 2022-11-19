@@ -5,7 +5,21 @@
   "main": "index.js",
   "scripts": {
     "delete": "pm2 delete all || true",
-    "start": "pm2 start app.js"
+    "start": "pm2 start src/server.js",
+    "build": "npm-run-all clean bundle:*  copy:*",
+    "bundle:client": "esbuild --bundle --outdir=dist/public/ public/index.js",
+    "clean": "rimraf dist/",
+    "copy:css": "cpx public/**/*.css dist/public/",
+    "fix": "npm-run-all fix:*",
+    "fix:eslint": "eslint --fix src/** __test__/** public/**/*.js",
+    "fix:stylelint": "stylelint --fix public/**/*.css",
+    "fix:prettier": "prettier --write . && prettier --parser html --write views/**",
+    "lint": "npm-run-all lint:*",
+    "lint:eslint": "eslint src/** __test__/** public/**/*.js",
+    "lint:markuplint": "markuplint views/**",
+    "lint:stylelint": "stylelint public/**/*.css",
+    "lint:prettier": "prettier --check . && prettier --check --parser html views/**",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
