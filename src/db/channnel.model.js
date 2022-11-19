@@ -7,6 +7,8 @@ const Channel = sequelize.define("Channel", {
   },
   name: {
     type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no name",
   },
 });
 
