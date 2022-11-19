@@ -10,12 +10,20 @@ describe("database: channel table test", () => {
       const channel = await Channel.create({
         name: "todoアプリプロジェクト",
       });
-      expect(channel.id).toBe(1);
+      expect(channel.channel_id).toBe(1);
       expect(channel.name).toBe("todoアプリプロジェクト");
     });
     it("チャンネルの名前指定なしで作成", async () => {
       const channel = await Channel.create({});
-      expect(channel.id).toBe(1);
+      expect(channel.channel_id).toBe(1);
+      expect(channel.name).toBe("no name");
+    });
+    it("idの確認", async () => {
+      await Channel.create({
+        name: "チャットアプリプロジェクト",
+      });
+      const channel = await Channel.create({});
+      expect(channel.channel_id).toBe(2);
       expect(channel.name).toBe("no name");
     });
   });
