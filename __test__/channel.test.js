@@ -65,4 +65,53 @@ describe("database: channel table test", () => {
       expect(channel.name).toBe("bar");
     });
   });
+
+  describe("delete test", () => {
+    it("タスクの取り消し", async () => {
+      await Channel.create({
+        name: "hogehoge",
+      });
+      await Channel.destroy({ truncate: true });
+      const count = await Channel.count();
+      expect(count).toBe(0);
+    });
+    it("channelのidを指定して削除", async () => {
+      await Channel.create({
+        name: "hogehoge",
+      });
+      await Channel.create({
+        name: "hogegehoge",
+      });
+      await Channel.destroy({
+        where: {
+          channel_id: 1,
+        },
+      });
+      const count = await Channel.count();
+      const channels = await Channel.findAll();
+      expect(channels[0].channel_id).toBe(2);
+      expect(channels[0].name).toBe("hogegehoge");
+      expect(count).toBe(1);
+    });
+    it("nameを指定して削除", async () => {
+      await Channel.create({
+        name: "foooo",
+      });
+      await Channel.create({
+        name: "barrrrrr",
+      });
+      await Channel.create({
+        name: "bazzzzzzz",
+      });
+      await Channel.destroy({
+        where: {
+          name: "bazzzzzzz",
+        },
+      });
+      const count = await Channel.count();
+      const channels = await Channel.findAll();
+      expect(channels[1].channel_id).toBe(2);
+      expect(count).toBe(2);
+    });
+  });
 });
