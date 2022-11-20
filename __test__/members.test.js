@@ -88,7 +88,7 @@ describe("database: members table test", () => {
       expect(total).toBe(3);
     });
   });
-  
+
   describe("database: delete test", () => {
     it("メンバーの削除", async () => {
       await Member.create({
