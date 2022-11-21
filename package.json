@@ -19,7 +19,7 @@
     "lint:markuplint": "markuplint views/**",
     "lint:stylelint": "stylelint public/**/*.css",
     "lint:prettier": "prettier --check . && prettier --check --parser html views/**",
-    "test": "jest"
+    "test": "jest -i"
   },
   "repository": {
     "type": "git",
