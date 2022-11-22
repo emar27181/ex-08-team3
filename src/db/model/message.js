@@ -21,7 +21,7 @@ const Message = sequelize.define("Message", {
     type: DataTypes.INTEGER,
   },
   employee_id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
 });
 
