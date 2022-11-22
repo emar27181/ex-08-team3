@@ -1,13 +1,19 @@
 const Member = require("../../../src/db/model/member");
-// const Channel = require("../src/db/channels.model");
-// const Employee = require("../src/db/employees.model");
+const Channel = require("../../../src/db/model/channnel");
+const Employee = require("../../../src/db/model/employee");
 
 jest.setTimeout(20000);
 describe("database: members table test", () => {
   beforeEach(async () => {
     await Member.sync({ force: true });
-    // await Channel.sync({ force: true });
-    // await Employee.sync({ force: true });
+    await Channel.sync({ force: true });
+    await Employee.sync({ force: true });
+    await Channel.create({ channel_id: 1, name: "a" });
+    await Channel.create({ channel_id: 2, name: "b" });
+    await Channel.create({ channel_id: 3, name: "c" });
+    await Employee.create({ employee_id: "ee123456", name: "a" });
+    await Employee.create({ employee_id: "ee234567", name: "b" });
+    await Employee.create({ employee_id: "ee345678", name: "c" });
   });
 
   describe("database: create test", () => {
