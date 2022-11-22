@@ -1,10 +1,34 @@
 const Message = require("../../../src/db/model/message");
+const Channel = require("../../../src/db/model/channnel");
+const Employee = require("../../../src/db/model/employee");
 const { Op } = require("sequelize");
 
 jest.setTimeout(20000);
 describe("messages table test", () => {
   beforeEach(async () => {
     await Message.sync({ force: true });
+    await Channel.sync({ force: true });
+    await Employee.sync({ force: true });
+
+    await Channel.create({ channel_id: 12345678, name: "a" });
+    await Channel.create({ channel_id: 23456789, name: "b" });
+    await Channel.create({ channel_id: 34567890, name: "c" });
+    await Channel.create({ channel_id: 45678901, name: "d" });
+    await Channel.create({ channel_id: 56789012, name: "e" });
+    await Channel.create({ channel_id: 67890123, name: "f" });
+    await Channel.create({ channel_id: 78901234, name: "g" });
+    await Channel.create({ channel_id: 89012345, name: "h" });
+    await Channel.create({ channel_id: 90123456, name: "i" });
+
+    await Employee.create({ employee_id: "aa123456", name: "a" });
+    await Employee.create({ employee_id: "aa234567", name: "b" });
+    await Employee.create({ employee_id: "aa345678", name: "c" });
+    await Employee.create({ employee_id: "aa456789", name: "d" });
+    await Employee.create({ employee_id: "aa567890", name: "e" });
+    await Employee.create({ employee_id: "aa678901", name: "f" });
+    await Employee.create({ employee_id: "aa789012", name: "g" });
+    await Employee.create({ employee_id: "aa890123", name: "h" });
+    await Employee.create({ employee_id: "aa901234", name: "i" });
   });
 
   describe("create test", () => {
