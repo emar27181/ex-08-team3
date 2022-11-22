@@ -1,4 +1,4 @@
-const Position = require("../src/db/position.model");
+const Position = require("../../../src/db/model/position");
 
 describe("position test", () => {
   beforeEach(async () => {

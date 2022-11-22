@@ -1,4 +1,4 @@
-const Message = require("../src/db/message.model");
+const Message = require("../../../src/db/model/message");
 const { Op } = require("sequelize");
 
 jest.setTimeout(20000);

@@ -1,4 +1,4 @@
-const Channel = require("../src/db/channnel.model");
+const Channel = require("../../../src/db/model/channnel");
 
 describe("database: channel table test", () => {
   beforeEach(async () => {
