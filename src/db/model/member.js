@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("./connect");
+const sequelize = require("../connect");
 
 const Member = sequelize.define("Member", {
   channel_id: {

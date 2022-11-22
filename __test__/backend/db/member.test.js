@@ -1,4 +1,4 @@
-const Member = require("../src/db/members.model");
+const Member = require("../../../src/db/model/member");
 // const Channel = require("../src/db/channels.model");
 // const Employee = require("../src/db/employees.model");
 

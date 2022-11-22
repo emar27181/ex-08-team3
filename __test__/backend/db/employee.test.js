@@ -1,4 +1,4 @@
-const Employee = require("../src/db/employees.model");
+const Employee = require("../../../src/db/model/employee");
 
 jest.setTimeout(20000);
 describe("database: employee table test", () => {
