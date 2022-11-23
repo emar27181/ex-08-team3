@@ -1,6 +1,6 @@
 const channelsModel = {
   redirectToAll: (req, res) => {
-    res.redirect("/all");
+    res.redirect("/channels/all");
   },
 };
 
