@@ -4,7 +4,7 @@ const sequelize = require("../connect");
 const Position = sequelize.define("Position", {
   position_id: {
     type: DataTypes.INTEGER,
-    defaultValue: 2,
+    defaultValue: 3,
   },
   position: {
     type: DataTypes.STRING,

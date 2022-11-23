@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../connect");
+const Position = require("./position");
 
 const Employee = sequelize.define("Employee", {
   employee_id: {
@@ -22,11 +23,11 @@ const Employee = sequelize.define("Employee", {
   position_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      is: /[0-2]/u,
-    },
-    defaultValue: 2,
+    defaultValue: 3,
   },
 });
+
+Position.hasMany(Employee, { foreignKey: "position_id" });
+Employee.belongsTo(Position);
 
 module.exports = Employee;
