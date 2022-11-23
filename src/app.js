@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const loginRouter = require("./login/login.controller");
+const channelsRouter = require("./channels.controller");
 
 app.set("view engine", "ejs");
 app.use(express.static("dist/public"));
@@ -15,5 +16,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/login", loginRouter);
+app.use("/channels", channelsRouter);
 
 module.exports = app;
