@@ -19,15 +19,15 @@ describe("database: employee table test", () => {
       position: "平社員",
     });
   });
-    
-    describe("create employee test", () => {
-	it("社員の追加", async () => {
-	    const employee = await Employee.create({
-		employee_id: "aa000000",
-		name: "加藤",
-		password: "kato",
-		position_id: 3,
-	    });
+
+  describe("create employee test", () => {
+    it("社員の追加", async () => {
+      const employee = await Employee.create({
+        employee_id: "aa000000",
+        name: "加藤",
+        password: "kato",
+        position_id: 3,
+      });
       expect(employee.employee_id).toBe("aa000000");
       expect(employee.name).toBe("加藤");
       expect(employee.password).toBe("kato");

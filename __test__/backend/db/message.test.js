@@ -1,6 +1,7 @@
 const Message = require("../../../src/db/model/message");
 const Channel = require("../../../src/db/model/channnel");
 const Employee = require("../../../src/db/model/employee");
+const Position = require("../../../src/db/model/position");
 const { Op } = require("sequelize");
 
 jest.setTimeout(20000);
@@ -19,6 +20,10 @@ describe("messages table test", () => {
     await Channel.create({ channel_id: 78901234, name: "g" });
     await Channel.create({ channel_id: 89012345, name: "h" });
     await Channel.create({ channel_id: 90123456, name: "i" });
+
+    await Position.create({ position_id: 1, position: "社長" });
+    await Position.create({ position_id: 2, position: "リーダー" });
+    await Position.create({ position_id: 3, position: "平社員" });
 
     await Employee.create({ employee_id: "aa123456", name: "a" });
     await Employee.create({ employee_id: "aa234567", name: "b" });
