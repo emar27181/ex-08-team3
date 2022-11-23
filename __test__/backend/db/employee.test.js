@@ -1,23 +1,37 @@
 const Employee = require("../../../src/db/model/employee");
+const Position = require("../../../src/db/model/position");
 
 jest.setTimeout(20000);
 describe("database: employee table test", () => {
   beforeEach(async () => {
     await Employee.sync({ force: true });
+    await Position.sync({ force: true });
+    await Position.create({
+      position_id: 1,
+      position: "社長",
+    });
+    await Position.create({
+      position_id: 2,
+      position: "リーダー",
+    });
+    await Position.create({
+      position_id: 3,
+      position: "平社員",
+    });
   });
-
-  describe("create employee test", () => {
-    it("社員の追加", async () => {
-      const employee = await Employee.create({
-        employee_id: "aa000000",
-        name: "加藤",
-        password: "kato",
-        position_id: 0,
-      });
+    
+    describe("create employee test", () => {
+	it("社員の追加", async () => {
+	    const employee = await Employee.create({
+		employee_id: "aa000000",
+		name: "加藤",
+		password: "kato",
+		position_id: 3,
+	    });
       expect(employee.employee_id).toBe("aa000000");
       expect(employee.name).toBe("加藤");
       expect(employee.password).toBe("kato");
-      expect(employee.position_id).toBe(0);
+      expect(employee.position_id).toBe(3);
     });
     it("nameのデフォルト値のテスト", async () => {
       const employee = await Employee.create({
@@ -50,7 +64,7 @@ describe("database: employee table test", () => {
       expect(employee.employee_id).toBe("aa000000");
       expect(employee.name).toBe("平出");
       expect(employee.password).toBe("jyoubetto");
-      expect(employee.position_id).toBe(2);
+      expect(employee.position_id).toBe(3);
     });
   });
 
