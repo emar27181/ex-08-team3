@@ -10,6 +10,7 @@ describe("messages table test", () => {
     await Message.sync({ force: true });
     await Channel.sync({ force: true });
     await Employee.sync({ force: true });
+    await Position.sync({ force: true });
 
     await Channel.create({ channel_id: 12345678, name: "a" });
     await Channel.create({ channel_id: 23456789, name: "b" });
