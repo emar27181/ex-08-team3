@@ -23,10 +23,7 @@ const Employee = sequelize.define("Employee", {
   position_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    validate: {
-      is: /[0-2]/u,
-    },
-    defaultValue: 2,
+    defaultValue: 3,
   },
 });
 
