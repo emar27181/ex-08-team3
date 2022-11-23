@@ -19,7 +19,7 @@ describe("position test", () => {
         position: "平社員",
       });
       expect(position.position).toBe("平社員");
-      expect(position.position_id).toBe(2);
+      expect(position.position_id).toBe(3);
     });
     it("positionのデフォルトのテスト", async () => {
       const position = await Position.create({
