@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const loginRouter = require("./login/login.controller");
-const channelsRouter = require("./channels.controller");
+const channelsRouter = require("./channels/channels.controller");
 
 app.set("view engine", "ejs");
 app.use(express.static("dist/public"));
