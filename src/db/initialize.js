@@ -12,5 +12,4 @@ const createInitialData = require("./initialData");
   await Message.sync({ force: true });
   await Position.sync({ force: true });
   await createInitialData();
-  const employees = await Employee.findAll();
 })();
