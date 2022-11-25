@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "delete": "pm2 delete all || true",
+    "connect": "node src/db/initialize.js",
+    "dev": "node src/server.js",
     "start": "pm2 start src/server.js",
     "build": "npm-run-all clean bundle:*  copy:*",
     "bundle:client": "esbuild --bundle --outdir=dist/public/ public/index.js",
-    "clean": "rimraf dist/ db/",
+    "clean": "rimraf dist/",
     "copy:css": "cpx public/**/*.css dist/public/",
     "fix": "npm-run-all fix:*",
     "fix:eslint": "eslint --fix src/** __test__/** public/**/*.js",
