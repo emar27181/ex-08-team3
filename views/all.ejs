@@ -9,9 +9,15 @@
   <body>
     <h1>全体向けメッセージ</h1>
     <div class="container form-space">
-      <form action="/all" method="post" id="messagge-form">
+      <form action="/channels/all" method="post" id="messagge-form">
         <label for="message_content" class="message-content">メッセージ</label>
-        <input type="text" name="content" id="message_content" />
+        <input
+          type="text"
+          name="content"
+          id="message_content"
+          class="form-control"
+          placeholder="ここにメッセージを入力"
+        />
       </form>
     </div>
 
@@ -20,9 +26,9 @@
         <% for (const message of messages) { %>
         <li>
           <div class="row">
-            <div class="message_id"><%= message.message_id %></div>
             <div class="content"><%= message.content %></div>
             <div class="time"><%= message.time %></div>
+            <div class="message_id"><%= message.message_id %></div>
             <div class="channel_id"><%= message.channel_id %></div>
           </div>
         </li>
