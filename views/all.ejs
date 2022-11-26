@@ -4,9 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>全体向けメッセージ</title>
   </head>
   <body>
-    <h1>全体向けメッセージ(準備中)</h1>
+    <h1>全体向けメッセージ</h1>
+    <ul id="message-list">
+      <% for (const message of messages) { %>
+      <li>
+        <div class="row">
+          <div class="message_id"><%= message.message_id %></div>
+          <div class="content"><%= message.content %></div>
+          <div class="time"><%= message.time %></div>
+          <div class="channel_id"><%= message.channel_id %></div>
+        </div>
+      </li>
+      <% } %>
+    </ul>
   </body>
 </html>
