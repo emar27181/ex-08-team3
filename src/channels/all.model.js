@@ -1,7 +1,7 @@
 const Message = require("../db/model/message");
 
 const allModel = {
-  displayAll: async (req, res) => {
+  displayMessage: async (req, res) => {
     await Message.sync();
     const messages = await Message.findAll();
     const formatedMessages = [];
