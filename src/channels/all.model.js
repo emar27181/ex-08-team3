@@ -18,6 +18,17 @@ const allModel = {
       messages: formatedMessages,
     });
   },
+
+  addMessage: async (req, res) => {
+    const reqData = req.body;
+
+    await Message.create({
+      content: reqData.content,
+      channel_id: 1,
+      employee_id: "ee000000",
+    });
+    res.redirect("/channels/all");
+  },
 };
 
 module.exports = allModel;
