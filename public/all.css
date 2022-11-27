@@ -32,6 +32,10 @@ aside {
   border-right: 1px solid black;
 }
 
+aside:not(.open) {
+  display: none;
+}
+
 aside > ul {
   list-style: none;
   padding: 5px;
@@ -69,7 +73,7 @@ aside > ul {
 
 footer {
   position: fixed;
-  left: 105px;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: gray;
@@ -77,15 +81,19 @@ footer {
   height: 75px;
 }
 
-.below-header {
+.open + #right-sidebar > footer {
+  left: 105px;
+}
+
+#below-header {
   padding-top: 50px;
 }
 
-.right-sidebar {
+.open + #right-sidebar {
   padding-left: 105px;
 }
 
-.content-body {
+#content-body {
   padding: 10px;
   padding-bottom: 75px;
 }
