@@ -26,33 +26,44 @@
     <title>全体向けメッセージ</title>
   </head>
   <body>
-    <h1>全体向けメッセージ</h1>
-    <div class="container form-space">
-      <form action="/channels/all" method="post" id="messagge-form">
-        <label for="message_content" class="message-content">メッセージ</label>
-        <input
-          type="text"
-          name="content"
-          id="message_content"
-          class="form-control"
-          placeholder="ここにメッセージを入力"
-        />
-      </form>
-    </div>
+    <header>
+      <div class="myrow">
+        <button class="btn btn-primary" id="sidebar-disp">---</button>
+        <div id="user">name: ee000000</div>
+      </div>
+    </header>
 
-    <div class="container">
-      <ul id="message-list">
-        <% for (const message of messages) { %>
-        <li>
-          <div class="row">
-            <div class="content"><%= message.content %></div>
-            <div class="time"><%= message.time %></div>
-            <div class="message_id"><%= message.message_id %></div>
-            <div class="channel_id"><%= message.channel_id %></div>
-          </div>
-        </li>
-        <% } %>
-      </ul>
+    <div class="below-header">
+      <h1>全体向けメッセージ</h1>
+      <div class="container form-space">
+        <form action="/channels/all" method="post" id="messagge-form">
+          <label for="message_content" class="message-content"
+            >メッセージ</label
+          >
+          <input
+            type="text"
+            name="content"
+            id="message_content"
+            class="form-control"
+            placeholder="ここにメッセージを入力"
+          />
+        </form>
+      </div>
+
+      <div class="container">
+        <ul id="message-list">
+          <% for (const message of messages) { %>
+          <li>
+            <div class="row">
+              <div class="content"><%= message.content %></div>
+              <div class="time"><%= message.time %></div>
+              <div class="message_id"><%= message.message_id %></div>
+              <div class="channel_id"><%= message.channel_id %></div>
+            </div>
+          </li>
+          <% } %>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
