@@ -12,7 +12,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send("Hello team3");
+  res.redirect("/login");
 });
 
 app.use("/login", loginRouter);
