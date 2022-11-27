@@ -89,3 +89,18 @@ footer {
   padding: 10px;
   padding-bottom: 75px;
 }
+
+ul#message-list > li {
+  margin-bottom: 10px;
+}
+
+ul#message-list > li > .row {
+  width: fit-content;
+  border-bottom: 1px solid black;
+}
+
+ul#message-list > li > .content {
+  padding: 10px;
+  background: radial-gradient(silver 10%, transparent 90%);
+  overflow-wrap: break-word;
+}
