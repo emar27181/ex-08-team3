@@ -1,4 +1,5 @@
 const Message = require("../db/model/message");
+const formatDate = require("./formatDate");
 
 const allModel = {
   displayMessage: async (req, res) => {
@@ -8,9 +9,10 @@ const allModel = {
     for (const message of messages) {
       const formatedMessage = {
         content: message.content,
-        time: message.time,
+        time: formatDate(message.time),
         message_id: message.message_id,
         channel_id: message.channel_id,
+        employee_id: message.employee_id,
       };
       formatedMessages.push(formatedMessage);
     }
