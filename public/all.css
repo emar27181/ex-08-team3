@@ -21,6 +21,56 @@ header {
   padding: 10px;
 }
 
+aside {
+  position: fixed;
+  background-color: #ff838b;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  width: 105px;
+  border-right: 1px solid black;
+}
+
+aside > ul {
+  list-style: none;
+  padding: 5px;
+}
+
+.channel {
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: wheat;
+  font-size: large;
+  height: 75px;
+  width: 75px;
+  margin-bottom: 3px;
+}
+
+.title {
+  position: fixed;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: silver;
+  padding: 5px;
+  left: 60px;
+  margin-top: 10px;
+  visibility: hidden;
+}
+
+.title:hover,
+.channel:hover + .title {
+  visibility: visible;
+}
+
 .below-header {
   padding-top: 50px;
+}
+
+.right-sidebar {
+  padding-left: 105px;
 }
