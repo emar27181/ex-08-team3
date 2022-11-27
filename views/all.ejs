@@ -29,7 +29,7 @@
   <body>
     <header>
       <div class="myrow">
-        <button class="btn btn-primary" id="sidebar-disp">---</button>
+        <button class="btn btn-dark" id="sidebar-disp">menu</button>
         <div id="user">name: ee000000</div>
       </div>
     </header>
@@ -71,13 +71,16 @@
               <label for="message_content" class="message-content"
                 >メッセージ</label
               >
-              <input
-                type="text"
-                name="content"
-                id="message_content"
-                class="form-control"
-                placeholder="ここにメッセージを入力"
-              />
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="content"
+                  id="message_content"
+                  class="form-control"
+                  placeholder="ここにメッセージを入力"
+                />
+                <button class="btn btn-secondary">送信</button>
+              </div>
             </form>
           </div>
         </footer>
