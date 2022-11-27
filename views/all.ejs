@@ -88,11 +88,12 @@
               <% for (const message of messages) { %>
               <li>
                 <div class="row">
-                  <div class="content"><%= message.content %></div>
-                  <div class="time"><%= message.time %></div>
-                  <div class="message_id"><%= message.message_id %></div>
-                  <div class="channel_id"><%= message.channel_id %></div>
+                  <div class="col-auto employee_id">
+                    <%= message.employee_id %>
+                  </div>
+                  <div class="col-auto time"><%= message.time %></div>
                 </div>
+                <div class="content"><%= message.content %></div>
               </li>
               <% } %>
             </ul>
