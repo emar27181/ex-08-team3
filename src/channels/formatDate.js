@@ -10,7 +10,7 @@ const formatDate = function (date) {
   };
 
   return new Intl.DateTimeFormat("ja", formatDateOptions).format(
-    new Date(date + (new Date().getTimezoneOffset() + 9 * 60) * 60 * 1000)
+    new Date(date + (date.getTimezoneOffset() + 9 * 60) * 60 * 1000)
   );
 };
 
