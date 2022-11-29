@@ -7,7 +7,20 @@ authRouter.get("/login", (req, res) => {
 });
 
 authRouter.post("/login", async (req, res) => {
-  res.status(418).end();
+  const employee = req.body;
+  const result = await Employee.findOne({
+    where: { employee_id: employee.id },
+  });
+  if (result === null) {
+    req.session = null;
+    res.redirect("/login");
+  } else if (result.password !== employee.password) {
+    req.session = null;
+    res.redirect("/login");
+  } else {
+    req.session.id = employee.id;
+    res.redirect("/channels");
+  }
 });
 
 module.exports = authRouter;
