@@ -1,5 +1,10 @@
 .myrow {
-  display: flex;
+  display: inline-flex;
+}
+
+.btn-light {
+  margin: 5px;
+  float: right;
 }
 
 header {
