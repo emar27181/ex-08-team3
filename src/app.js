@@ -1,7 +1,7 @@
 const express = require("express");
 const cookieSession = require("cookie-session");
 const app = express();
-// const authRouter = require("./auth/controller");
+const authRouter = require("./auth/controller");
 const channelsRouter = require("./channels/channels.controller");
 
 app.set("view engine", "ejs");
@@ -21,6 +21,8 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
+
+app.use("/", authRouter);
 
 app.use("/channels", channelsRouter);
 app.get("/", (req, res) => {
