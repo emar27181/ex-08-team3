@@ -24,6 +24,14 @@ app.use(
 
 app.use("/", authRouter);
 
+app.use((req, res, next) => {
+  if (typeof req.session.id === "undefined") {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+});
+
 app.use("/channels", channelsRouter);
 app.get("/", (req, res) => {
   res.redirect("/login");
