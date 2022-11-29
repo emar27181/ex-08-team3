@@ -30,6 +30,8 @@
     "id-length": "off",
     "no-plusplus": "off",
     "capitalized-comments": "off",
-    "multiline-comment-style": "off"
+    "multiline-comment-style": "off",
+    "require-atomic-updates": "off",
+    "no-negated-condition": "off"
   }
 }
