@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人向けメッセージ</title>
+  </head>
+  <body>
+    <div id="content-body">
+      <h1>個人向けメッセージ</h1>
+      <div class="container">
+        <ul id="message-list">
+          <% for (const message of messages) { %>
+          <li>
+            <div class="row">
+              <div class="col-auto employee_id"><%= message.employee_id %></div>
+              <div class="col-auto time"><%= message.time %></div>
+            </div>
+            <div class="content"><%= message.content %></div>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
