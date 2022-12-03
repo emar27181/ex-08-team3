@@ -7,6 +7,21 @@
     <title>個人向けメッセージ</title>
   </head>
   <body>
-    <h1>個人向けメッセージ</h1>
+    <div id="content-body">
+      <h1>個人向けメッセージ</h1>
+      <div class="container">
+        <ul id="message-list">
+          <% for (const message of messages) { %>
+          <li>
+            <div class="row">
+              <div class="col-auto employee_id"><%= message.employee_id %></div>
+              <div class="col-auto time"><%= message.time %></div>
+            </div>
+            <div class="content"><%= message.content %></div>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
