@@ -39,7 +39,6 @@ aside {
   left: 0;
   bottom: 0;
   overflow-y: scroll;
-  scrollbar-color: while;
   width: 105px;
   border-right: 1px solid black;
   border-top: 1px solid;
@@ -49,7 +48,7 @@ aside:not(.open) {
   display: none;
 }
 
-aside > ul {
+aside > div > ul {
   list-style: none;
   padding: 5px;
 }
@@ -116,7 +115,7 @@ ul#message-list > li:hover {
 }
 
 ul#message-list > li > .row {
-  width: fit-content;
+  width: max-content;
   margin-left: 10px;
   border-bottom: 1px solid black;
 }
