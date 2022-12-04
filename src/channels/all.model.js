@@ -1,9 +1,11 @@
+const Channel = require("../db/model/channnel");
 const Message = require("../db/model/message");
 const formatDate = require("./formatDate");
 
 const allModel = {
   displayMessage: async (req, res) => {
     await Message.sync();
+    const channels = await Channel.findAll();
     const messages = await Message.findAll();
     const formatedMessages = [];
     for (const message of messages) {
@@ -17,6 +19,7 @@ const allModel = {
       formatedMessages.push(formatedMessage);
     }
     res.render("all", {
+      channels,
       messages: formatedMessages,
     });
   },
