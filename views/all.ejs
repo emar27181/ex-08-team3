@@ -42,16 +42,16 @@
       <aside class="open">
         <ul>
           <div class="container-fluid">
-            <% for (const message of messages) { %>
+            <% for (const channel of channels) { %>
             <li>
               <div class="row">
                 <div
                   class="channel initialism"
                   data-bs-toggle="tooltip"
                   data-bs-plaecment="right"
-                  title="<%= message.channel_id %>"
+                  title="<%= channel.name %>"
                 >
-                  <%= message.content.charAt(0) %>
+                  <%= channel.name.charAt(0) %>
                 </div>
               </div>
             </li>
