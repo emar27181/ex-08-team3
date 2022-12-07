@@ -44,6 +44,13 @@
       <aside class="open">
         <div class="container-fluid">
           <ul>
+            <li>
+              <form action="/channel" method="get">
+                <div class="row">
+                  <button class="channel btn" title="チャンネル作成">+</button>
+                </div>
+              </form>
+            </li>
             <% for (const channel of channels) { %>
             <li>
               <div class="row">
