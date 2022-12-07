@@ -2,6 +2,7 @@ const express = require("express");
 const cookieSession = require("cookie-session");
 const app = express();
 const authRouter = require("./auth/controller");
+const makeChannelRouter = require("./makeChannel/controller");
 const channelsRouter = require("./channels/channels.controller");
 
 app.set("view engine", "ejs");
@@ -23,6 +24,7 @@ app.use(
 );
 
 app.use("/", authRouter);
+app.use("/", makeChannelRouter);
 
 app.use((req, res, next) => {
   if (typeof req.session.id === "undefined") {

@@ -35,13 +35,22 @@
           <div class="col-auto" id="this-channel">channel: all</div>
         </div>
       </div>
-      <a href="https://team3.hayakawa-lab.jp/" class="btn btn-light">logout</a>
+      <form action="/" method="get" id="logout">
+        <button class="btn btn-light">logout</button>
+      </form>
     </header>
 
     <div id="below-header">
       <aside class="open">
         <div class="container-fluid">
           <ul>
+            <li>
+              <form action="/channel" method="get">
+                <div class="row">
+                  <button class="channel btn" title="チャンネル作成">+</button>
+                </div>
+              </form>
+            </li>
             <% for (const channel of channels) { %>
             <li>
               <div class="row">

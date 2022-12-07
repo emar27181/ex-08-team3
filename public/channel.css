@@ -125,3 +125,16 @@ ul#message-list > li > .content {
   overflow-wrap: break-word;
   margin-left: 10px;
 }
+
+body {
+  background-color: rgb(244 244 244);
+}
+
+h1 {
+  font-weight: bold;
+  padding: 5px;
+}
+
+input {
+  margin-bottom: 5px;
+}
