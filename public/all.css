@@ -2,7 +2,7 @@
   display: inline-flex;
 }
 
-.btn-light {
+#logout {
   margin: 5px;
   float: right;
 }
