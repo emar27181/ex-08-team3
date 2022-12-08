@@ -13,7 +13,6 @@ const meModel = {
         content: message.content,
         time: formatDate(message.time),
         message_id: message.message_id,
-        channel_id: message.channel_id,
         employee_id: message.employee_id,
       };
       formatedMessages.push(formatedMessage);
