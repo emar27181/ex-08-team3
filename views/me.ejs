@@ -16,12 +16,29 @@
             <div class="row">
               <div class="col-auto employee_id"><%= message.employee_id %></div>
               <div class="col-auto time"><%= message.time %></div>
+              <div class="col-auto channel_id"><%= message.channel_id %></div>
             </div>
             <div class="content"><%= message.content %></div>
           </li>
           <% } %>
         </ul>
       </div>
+    </div>
+
+    <div class="container form-space">
+      <form action="/channels/me" method="post" id="messagge-form">
+        <label for="message_content" class="message-content">メッセージ</label>
+        <div class="input-group">
+          <input
+            type="text"
+            name="content"
+            id="message_content"
+            class="form-control"
+            placeholder="ここにメッセージを入力"
+          />
+          <button class="btn btn-secondary">送信</button>
+        </div>
+      </form>
     </div>
   </body>
 </html>
