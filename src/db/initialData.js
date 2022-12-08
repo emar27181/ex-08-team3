@@ -81,13 +81,13 @@ const createChannel = async () => {
 
 const createMessage = async () => {
   await Message.create({
-    content: "initial message",
+    content: "initial message(channel_id=1)",
     time: new Date(),
     employee_id: "ee000000",
     channel_id: 1,
   });
   await Message.create({
-    content: "second message",
+    content: "second message(channel_id=1)",
     time: new Date(),
     employee_id: "ee111111",
     channel_id: 1,
