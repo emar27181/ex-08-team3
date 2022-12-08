@@ -6,7 +6,9 @@ const allModel = {
   displayMessage: async (req, res) => {
     await Message.sync();
     const channels = await Channel.findAll();
-    const messages = await Message.findAll();
+    const messages = await Message.findAll({
+      where: { channel_id: 1 },
+    });
     const formatedMessages = [];
     for (const message of messages) {
       const formatedMessage = {
