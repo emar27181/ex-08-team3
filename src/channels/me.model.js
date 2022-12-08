@@ -4,7 +4,9 @@ const formatDate = require("./formatDate");
 const meModel = {
   displayDM: async (req, res) => {
     await Message.sync();
-    const messages = await Message.findAll();
+    const messages = await Message.findAll({
+      where: { channel_id: 2 },
+    });
     const formatedMessages = [];
     for (const message of messages) {
       const formatedMessage = {
