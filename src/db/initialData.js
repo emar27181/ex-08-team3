@@ -74,6 +74,9 @@ const createChannel = async () => {
   await Channel.create({
     name: "all",
   });
+  await Channel.create({
+    name: "me",
+  });
 };
 
 const createMessage = async () => {
