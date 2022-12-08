@@ -92,6 +92,19 @@ const createMessage = async () => {
     employee_id: "ee111111",
     channel_id: 1,
   });
+
+  await Message.create({
+    content: "initial message(channel_id=2)",
+    time: new Date(),
+    employee_id: "ee000000",
+    channel_id: 2,
+  });
+  await Message.create({
+    content: "second message(channel_id=2)",
+    time: new Date(),
+    employee_id: "ee111111",
+    channel_id: 2,
+  });
 };
 
 module.exports = createInitialData;
