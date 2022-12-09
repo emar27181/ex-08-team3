@@ -23,4 +23,9 @@ authRouter.post("/login", async (req, res) => {
   }
 });
 
+authRouter.get("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/login");
+});
+
 module.exports = authRouter;
