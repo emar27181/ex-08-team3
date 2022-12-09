@@ -4,17 +4,19 @@ const formatDate = function (date) {
     date + (date.getTimezoneOffset() + 9 * 60) * 60 * 1000
   );
   const year = jpDate.getFullYear();
+  const month = jpDate.getMonth();
   const day = jpDate.getDate();
-  let formatedDate = `${jpDate.getHours()}:${jpDate
+  const time = `${jpDate.getHours()}:${jpDate
     .getMinutes()
     .toString()
     .padStart(2, "0")}`;
-  if (now.getDate() !== day) {
-    formatedDate = `${jpDate.getMonth() + 1}/${day} ${formatedDate}`;
-  }
+  let formatedDate = time;
   if (now.getFullYear() !== year) {
-    formatedDate = `${year}/${formatedDate}`;
+    formatedDate = `${year}/${jpDate.getMonth() + 1}/${day} ${time}`;
+  } else if (now.getMonth() !== month || now.getDate() !== day) {
+    formatedDate = `${jpDate.getMonth() + 1}/${day} ${time}`;
   }
+
   return formatedDate;
 };
 
