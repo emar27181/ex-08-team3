@@ -5,9 +5,111 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer src="../index.js"></script>
+    <link href="../all.css" rel="stylesheet" />
+
     <title>グループ向けメッセージ</title>
   </head>
   <body>
-    <h1>グループ向けメッセージ</h1>
+    <header>
+      <div class="myrow">
+        <button class="btn btn-dark" id="sidebar-disp">menu</button>
+        <div class="myrow" id="page-info">
+          <div class="col-auto" id="userid">ID: ee000000</div>
+          <div class="col-auto" id="this-channel">channel: group</div>
+        </div>
+      </div>
+      <form action="/logout" method="get" id="logout">
+        <button class="btn btn-light">logout</button>
+      </form>
+    </header>
+
+    <div id="below-header">
+      <aside class="open">
+        <div class="container-fluid">
+          <ul>
+            <li>
+              <form action="/channel" method="get">
+                <div class="row">
+                  <button class="channel btn" title="チャンネル作成">+</button>
+                </div>
+              </form>
+            </li>
+            <% for (const channel of channels) { %>
+            <li>
+              <div class="row">
+                <button
+                  class="channel initialism"
+                  data-bs-toggle="tooltip"
+                  data-bs-plaecment="right"
+                  title="<%= channel.name %>"
+                >
+                  <%= channel.name.charAt(0) %>
+                </button>
+              </div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </aside>
+
+      <div id="right-sidebar">
+        <footer>
+          <div class="container-fluid form-space">
+            <form action="/channels/all" method="post" id="messagge-form">
+              <label for="message_content" class="message-content"
+                >メッセージ</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="content"
+                  id="message_content"
+                  class="form-control"
+                  placeholder="ここにメッセージを入力"
+                  required
+                />
+                <button class="btn btn-secondary">送信</button>
+              </div>
+            </form>
+          </div>
+        </footer>
+
+        <div id="content-body">
+          <h1>グループ向けメッセージ</h1>
+          <div class="container-fluid">
+            <ul id="message-list">
+              <% for (const message of messages) { %>
+              <li>
+                <div class="row">
+                  <div class="col-auto employee_id">
+                    <%= message.employee_id %>
+                  </div>
+                  <div class="col-auto time"><%= message.time %></div>
+                </div>
+                <div class="content"><%= message.content %></div>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
