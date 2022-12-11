@@ -1,10 +1,10 @@
 const session = require("supertest-session");
-const app = require("../../src/app");
-const Channel = require("../../src/db/model/channnel");
-const Employee = require("../../src/db/model/employee");
-const Member = require("../../src/db/model/member");
-const Message = require("../../src/db/model/message");
-const Position = require("../../src/db/model/position");
+const app = require("../../../src/app");
+const Channel = require("../../../src/db/model/channnel");
+const Employee = require("../../../src/db/model/employee");
+const Member = require("../../../src/db/model/member");
+const Message = require("../../../src/db/model/message");
+const Position = require("../../../src/db/model/position");
 
 jest.setTimeout(20000);
 let testSession = null;
