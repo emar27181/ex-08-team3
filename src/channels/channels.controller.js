@@ -8,7 +8,11 @@ const channelsRouter = express.Router();
 channelsRouter.get("/", channels.redirectToAll);
 
 channelsRouter.post("/", (req, res) => {
-  res.redirect("/channel");
+  if (req.body.transition === "+") {
+    res.redirect("/channel");
+  } else {
+    res.redirect(req.headers.referer);
+  }
 });
 
 channelsRouter.get("/all", all.displayMessage);
