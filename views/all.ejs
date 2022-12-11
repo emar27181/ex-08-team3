@@ -47,22 +47,33 @@
             <li>
               <form action="/channels" method="post">
                 <div class="row">
-                  <button class="channel btn" title="チャンネル作成">+</button>
+                  <button
+                    class="channel btn"
+                    name="transition"
+                    value="+"
+                    title="チャンネル作成"
+                  >
+                    +
+                  </button>
                 </div>
               </form>
             </li>
             <% for (const channel of channels) { %>
             <li>
-              <div class="row">
-                <button
-                  class="channel initialism"
-                  data-bs-toggle="tooltip"
-                  data-bs-plaecment="right"
-                  title="<%= channel.name %>"
-                >
-                  <%= channel.name.charAt(0) %>
-                </button>
-              </div>
+              <form action="/channels" method="post">
+                <div class="row">
+                  <button
+                    class="channel initialism"
+                    data-bs-toggle="tooltip"
+                    data-bs-plaecment="right"
+                    name="transition"
+                    value="<%= channel.channel_id %>"
+                    title="<%= channel.name %>"
+                  >
+                    <%= channel.name.charAt(0) %>
+                  </button>
+                </div>
+              </form>
             </li>
             <% } %>
           </ul>
