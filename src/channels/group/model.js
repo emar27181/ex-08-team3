@@ -25,7 +25,7 @@ const groupModel = {
     });
   },
 
-  addMessage: async (req, res) => {
+  addMessage: async (req, res, next) => {
     const reqData = req.body;
 
     await Message.create({
@@ -33,7 +33,8 @@ const groupModel = {
       channel_id: 3,
       employee_id: "ee000000",
     });
-    res.redirect("/channels/group");
+
+    next();
   },
 };
 
