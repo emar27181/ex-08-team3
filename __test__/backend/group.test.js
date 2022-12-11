@@ -34,6 +34,15 @@ describe("Test the group path", () => {
       password: "password",
       position_id: 1,
     });
+    await Channel.create({
+      name: "all",
+    });
+    await Channel.create({
+      name: "me",
+    });
+    await Channel.create({
+      name: "group",
+    });
     testSession = session(app);
     await testSession
       .post("/login")
@@ -52,6 +61,14 @@ describe("Test the group path", () => {
       expect.assertions(1);
       const res = await testSession.get("/channels/group");
       expect(res.type).toStrictEqual("text/html");
+    });
+  });
+
+  describe("POST /channels/group", () => {
+    it("response status", async () => {
+      expect.assertions(1);
+      const res = await testSession.post("/channels/group");
+      expect(res.status).toStrictEqual(302);
     });
   });
 });
