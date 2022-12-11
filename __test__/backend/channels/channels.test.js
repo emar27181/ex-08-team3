@@ -34,15 +34,6 @@ describe("Test the channels path", () => {
       password: "password",
       position_id: 1,
     });
-    // await Channel.create({
-    //   name: "all",
-    // });
-    // await Channel.create({
-    //   name: "me",
-    // });
-    // await Channel.create({
-    //   name: "group",
-    // });
     testSession = session(app);
     await testSession
       .post("/login")
@@ -57,9 +48,12 @@ describe("Test the channels path", () => {
       expect(res.status).toStrictEqual(302);
     });
 
-    it("response redirect path", async () => {
+    it("response redirect /channel", async () => {
       expect.assertions(1);
-      const res = await testSession.post("/channels");
+      const res = await testSession
+        .post("/channels")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({ transition: "+" });
       expect(res.header.location).toStrictEqual("/channel");
     });
   });
