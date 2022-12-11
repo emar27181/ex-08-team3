@@ -10,4 +10,8 @@ channelsRouter.post("/all", all.addMessage);
 channelsRouter.get("/me", me.displayDM);
 channelsRouter.post("/me", me.addMessage);
 
+channelsRouter.get("/group", (req, res) => {
+  res.render("group", {});
+});
+
 module.exports = channelsRouter;
