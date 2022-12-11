@@ -56,5 +56,32 @@ describe("Test the channels path", () => {
         .send({ transition: "+" });
       expect(res.header.location).toStrictEqual("/channel");
     });
+
+    it("response redirect /channels/all", async () => {
+      expect.assertions(1);
+      const res = await testSession
+        .post("/channels")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({ transition: "1" });
+      expect(res.header.location).toStrictEqual("/channels/all");
+    });
+
+    it("response redirect /channels/me", async () => {
+      expect.assertions(1);
+      const res = await testSession
+        .post("/channels")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({ transition: "2" });
+      expect(res.header.location).toStrictEqual("/channels/me");
+    });
+
+    it("response redirect /channels/group", async () => {
+      expect.assertions(1);
+      const res = await testSession
+        .post("/channels")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({ transition: "3" });
+      expect(res.header.location).toStrictEqual("/channels/group");
+    });
   });
 });
