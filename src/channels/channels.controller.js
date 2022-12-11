@@ -10,6 +10,12 @@ channelsRouter.get("/", channels.redirectToAll);
 channelsRouter.post("/", (req, res) => {
   if (req.body.transition === "+") {
     res.redirect("/channel");
+  } else if (req.body.transition === "1") {
+    res.redirect("/channels/all");
+  } else if (req.body.transition === "2") {
+    res.redirect("/channels/me");
+  } else if (req.body.transition === "3") {
+    res.redirect("/channels/group");
   } else {
     res.redirect(req.headers.referer);
   }
