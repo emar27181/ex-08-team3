@@ -24,6 +24,17 @@ const groupModel = {
       messages: formatedMessages,
     });
   },
+
+  addMessage: async (req, res) => {
+    const reqData = req.body;
+
+    await Message.create({
+      content: reqData.content,
+      channel_id: 3,
+      employee_id: "ee000000",
+    });
+    res.redirect("/channels/group");
+  },
 };
 
 module.exports = groupModel;
