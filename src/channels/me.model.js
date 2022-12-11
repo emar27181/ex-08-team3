@@ -1,8 +1,14 @@
+const Channel = require("../db/model/channnel");
+const Employee = require("../db/model/employee");
 const Message = require("../db/model/message");
 const formatDate = require("./formatDate");
 
 const meModel = {
   displayDM: async (req, res) => {
+    const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    const channels = await Channel.findAll();
     await Message.sync();
     const messages = await Message.findAll({
       where: { channel_id: 2 },
@@ -18,6 +24,8 @@ const meModel = {
       formatedMessages.push(formatedMessage);
     }
     res.render("me", {
+      user,
+      channels,
       messages: formatedMessages,
     });
   },
