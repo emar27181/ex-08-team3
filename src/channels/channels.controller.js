@@ -6,6 +6,11 @@ const groupRouter = require("./group/controller");
 const channelsRouter = express.Router();
 
 channelsRouter.get("/", channels.redirectToAll);
+
+channelsRouter.post("/", (req, res) => {
+  res.redirect("/channel");
+});
+
 channelsRouter.get("/all", all.displayMessage);
 channelsRouter.post("/all", all.addMessage);
 channelsRouter.get("/me", me.displayDM);
