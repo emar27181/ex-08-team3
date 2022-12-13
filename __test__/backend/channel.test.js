@@ -56,4 +56,19 @@ describe("Test the login path", () => {
       expect(response.statusCode).toBe(200);
     });
   });
+
+  it("post message to all", async () => {
+    const response = await authenticatedSession
+      .post("/channels/all")
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .send({ content: "hogehoge" })
+      .expect(302);
+    expect(response.text).toBe("Found. Redirecting to /channels/all");
+    const messages = await Message.findAll({
+      where: {
+        content: "hogehoge",
+      },
+    });
+    expect(messages[0].message_id).toBe(1);
+  });
 });
