@@ -9,7 +9,7 @@ channelsRouter.get("/", channels.redirectToAll);
 channelsRouter.get("/all", all.displayMessage);
 channelsRouter.post("/all", all.addMessage);
 channelsRouter.get("/me", me.displayDM);
-channelsRouter.post("/me", me.addMessage);
+//channelsRouter.post("/me", me.addMessage);
 
 channelsRouter.use("/group", groupRouter);
 
