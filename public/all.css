@@ -15,14 +15,21 @@ header {
   height: 50px;
 }
 
+#header-content {
+  width: 100%;
+}
+
 #sidebar-disp {
   margin: 5px;
+  height: 40px;
 }
 
 #page-info {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 10px;
+  padding-right: 0;
+  width: calc(100% - 160px);
 }
 
 #page-info > div {
