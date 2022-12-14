@@ -1,7 +1,5 @@
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
-const Message = require("../db/model/message");
-const formatDate = require("./formatDate");
 
 const meModel = {
   displayDM: async (req, res) => {
@@ -9,36 +7,23 @@ const meModel = {
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
-    await Message.sync();
-    const messages = await Message.findAll({
-      where: { channel_id: 2 },
-    });
-    const formatedMessages = [];
-    for (const message of messages) {
-      const formatedMessage = {
-        content: message.content,
-        time: formatDate(message.time),
-        message_id: message.message_id,
-        employee_id: message.employee_id,
+    await Employee.sync();
+    const employees = await Employee.findAll();
+    const formatedEmployees = [];
+    for (const employee of employees) {
+      const formatedEmployee = {
+        employee_id: employee.employee_id,
+        name: employee.name,
+        password: employee.passwoed,
+        position_id: employee.position_id,
       };
-      formatedMessages.push(formatedMessage);
+      formatedEmployees.push(formatedEmployee);
     }
     res.render("me", {
       user,
       channels,
-      messages: formatedMessages,
+      employees: formatedEmployees,
     });
-  },
-
-  addMessage: async (req, res) => {
-    const reqData = req.body;
-
-    await Message.create({
-      content: reqData.content,
-      channel_id: 2,
-      employee_id: "ee000000",
-    });
-    res.redirect("/channels/me");
   },
 };
 
