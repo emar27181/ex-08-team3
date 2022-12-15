@@ -23,6 +23,7 @@
 
     <script defer src="../index.js"></script>
     <link href="../all.css" rel="stylesheet" />
+    <link href="../me.css" rel="stylesheet" />
 
     <title>個人向けメッセージ</title>
   </head>
@@ -98,16 +99,15 @@
         <div id="content-body">
           <h1>個人向けメッセージ</h1>
           <div class="container-fluid">
-            <ul id="message-list">
-              <% for (const message of messages) { %>
+            <ul id="employee-list">
+              <% for (const employee of employees) { %>
               <li>
                 <div class="row">
                   <div class="col-auto employee_id">
-                    <%= message.employee_id %>
+                    <%= employee.employee_id %>
                   </div>
-                  <div class="col-auto time"><%= message.time %></div>
+                  <div class="col-auto name"><%= employee.name %></div>
                 </div>
-                <div class="content"><%= message.content %></div>
               </li>
               <% } %>
             </ul>

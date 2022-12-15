@@ -1,0 +1,16 @@
+ul#employee-list > li {
+  margin-bottom: 10px;
+  background-color: rgb(244 244 244);
+  border-radius: 5px;
+  transition-duration: 0.5s;
+}
+
+ul#employee-list > li:hover {
+  margin-bottom: 10px;
+  background-color: rgb(220 220 220);
+}
+
+ul#employee-list > li > .row {
+  width: max-content;
+  margin-left: 10px;
+}
