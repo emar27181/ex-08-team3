@@ -1,4 +1,4 @@
-/*const Channel = require("../db/model/channnel");
+/* const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
 const Message = require("../db/model/message");
 const formatDate = require("./formatDate");
