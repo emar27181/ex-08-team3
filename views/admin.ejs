@@ -49,7 +49,9 @@
           <ul>
             <li>
               <div class="row">
-                <a href="/channel" class="channel btn" title="チャンネル作成">+</a>
+                <a href="/channel" class="channel btn" title="チャンネル作成"
+                  >+</a
+                >
               </div>
             </li>
             <% for (const channel of channels) { %>
@@ -76,10 +78,11 @@
           <h1>管理用ページ</h1>
           <div class="container-fluid">
             <div class="input-group">
-              <label for="employee_id" class="employee_id">
+              <label for="employee_id_content" class="employee_id-content">
                 従業員id
               </label>
               <input
+                id="employee_id_content"
                 type="text"
                 name="emplyee_id"
                 placeholder="ee000000"
