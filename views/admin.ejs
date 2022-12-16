@@ -24,7 +24,7 @@
     <script defer src="../index.js"></script>
     <link href="../all.css" rel="stylesheet" />
 
-    <title>全体向けメッセージ</title>
+    <title>管理用ページ</title>
   </head>
   <body>
     <header>
@@ -37,7 +37,6 @@
             channel: 全体向けメッセージ
           </div>
         </div>
-        <a href="/admin" id="mem-add" class="btn btn-light"> 社員追加 </a>
         <form action="/logout" method="get" id="logout">
           <button class="btn btn-light">logout</button>
         </form>
@@ -75,43 +74,22 @@
       </aside>
 
       <div id="right-sidebar">
-        <footer>
-          <div class="container-fluid form-space">
-            <form action="/channels/all" method="post" id="messagge-form">
-              <label for="message_content" class="message-content"
-                >メッセージ</label
-              >
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="content"
-                  id="message_content"
-                  class="form-control"
-                  placeholder="ここにメッセージを入力"
-                  required
-                />
-                <button class="btn btn-secondary">送信</button>
-              </div>
-            </form>
-          </div>
-        </footer>
-
         <div id="content-body">
-          <h1>全体向けメッセージ</h1>
+          <h1>管理用ページ</h1>
           <div class="container-fluid">
-            <ul id="message-list">
-              <% for (const message of messages) { %>
-              <li>
-                <div class="row">
-                  <div class="col-auto employee_id">
-                    <%= message.employee_id %>
-                  </div>
-                  <div class="col-auto time"><%= message.time %></div>
-                </div>
-                <div class="content"><%= message.content %></div>
-              </li>
-              <% } %>
-            </ul>
+            <div class="input-group">
+              <label for="employee_id_content" class="employee_id-content">
+                従業員id
+              </label>
+              <input
+                id="employee_id_content"
+                type="text"
+                name="emplyee_id"
+                placeholder="ee000000"
+                required
+              />
+              <button class="btn btn-secondary">検索</button>
+            </div>
           </div>
         </div>
       </div>

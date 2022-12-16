@@ -31,6 +31,18 @@ const allModel = {
     });
   },
 
+  displayAdmin: async (req, res) => {
+    const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    await Message.sync();
+    const channels = await Channel.findAll();
+    res.render("admin", {
+      user,
+      channels,
+    });
+  },
+
   addMessage: async (req, res) => {
     const reqData = req.body;
 
