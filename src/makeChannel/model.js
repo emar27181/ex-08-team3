@@ -4,7 +4,6 @@ const makeChannelModel = {
   renderToChannel: (req, res) => {
     res.render("channel", {});
   },
-
   addChannel: async (req, res) => {
     const reqData = req.body;
 
