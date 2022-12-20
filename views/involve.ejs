@@ -34,11 +34,8 @@
         <div class="myrow" id="page-info">
           <div class="col-auto" id="username">name: <%= user.name %></div>
           <div class="col-auto" id="userid">ID: <%= user.employee_id %></div>
-          <div class="col-auto" id="this-channel">channel: 社員追加</div>
         </div>
-        <form action="/logout" method="get" id="logout">
-          <button class="btn btn-light">logout</button>
-        </form>
+        <a href="/mypage" id="mypage" class="btn btn-light"> MyPage </a>
       </div>
     </header>
 
