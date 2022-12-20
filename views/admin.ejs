@@ -109,8 +109,15 @@
                       <%= employee.employee_id %>
                     </div>
                     <div class="col-auto name"><%= employee.name %></div>
-                    <div class="col-auto position_id"><%= employee.position_id %></div>
-                    <button>削除</button>
+                    <% if (employee.position_id === 1) {%>
+                    マネージャー
+                    <% }else if (employee.position_id === 2) {%>
+                    リーダー
+                    <% }else if (employee.position_id === 3) {%>
+                    社員
+                    <%} %>
+                    <button id="change-pposition">役職変更</button>
+                    <button id="mem-del">削除</button>
                   </div>
                 </li>
                 <% } %>
