@@ -3,6 +3,7 @@ const authRouter = express.Router();
 const Employee = require("../db/model/employee");
 const all = require("../channels/all.model.js");
 const admin = require("../channels/admin.model.js");
+const mypage = require("../channels/mypage.model.js");
 
 authRouter.get("/login", (req, res) => {
   res.render("login", {});
@@ -11,6 +12,8 @@ authRouter.get("/login", (req, res) => {
 authRouter.get("/admin", all.displayAdmin);
 
 authRouter.get("/admin/involve", admin.displayInvolve);
+
+authRouter.get("/mypage", mypage.displayMypage);
 
 authRouter.post("/login", async (req, res) => {
   const employee = req.body;
