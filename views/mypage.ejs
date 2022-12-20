@@ -70,22 +70,42 @@
       <div id="right-sidebar">
         <div id="content-body">
           <h1>マイページ</h1>
-          <div id="username">name: <%= user.name %></div> <br />
-          <div id="userid">ID: <%= user.employee_id %></div> <br />
-          <div id="userpassword">password: <%= user.password %></div> <br />
+          <div>name: <%= user.name %></div>
+          <br />
+          <div>ID: <%= user.employee_id %></div>
+          <br />
+          <div>password: <%= user.password %></div>
+          <br />
           <div>
-            <% if(user.position_id === 1) { %>
-                position: マネージャー
-            <% } else if (user.position_id === 2) { %>
-                position: リーダー
-            <% } else if (user.position_id === 3) { %>
-                position: 社員
-            <% } %>
-          </div> <br />
-          <input type="text" name="name" id="new_name_content" placeholder="name" required />
-          <button>変更</button><br />
-          <input type="text" name="password" id="new_password_content" placeholder="password" required />
-          <button>変更</button><br />
+            <% if(user.position_id === 1) { %> position: マネージャー <% } else
+            if (user.position_id === 2) { %> position: リーダー <% } else if
+            (user.position_id === 3) { %> position: 社員 <% } %>
+          </div>
+          <br />
+          <label for="new_name_content" class="message-content">new name</label>
+          <div class="input-new-name">
+            <input
+              type="text"
+              name="new-name"
+              id="new_name_content"
+              placeholder="name"
+              required
+            />
+            <button>変更</button><br />
+          </div>
+          <label for="new_password_content" class="message-content"
+            >new password</label
+          >
+          <div class="input-new-password">
+            <input
+              type="text"
+              name="new-password"
+              id="new_password_content"
+              placeholder="password"
+              required
+            />
+            <button>変更</button><br />
+          </div>
           <form action="/logout" method="get" id="logout">
             <button class="btn btn-light">logout</button>
           </form>
