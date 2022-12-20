@@ -38,6 +38,7 @@
           </div>
         </div>
         <form action="/logout" method="get" id="logout">
+          <a href="/admin" id="mem-add" class="btn btn-light"> 社員追加 </a>
           <button class="btn btn-light">logout</button>
         </form>
       </div>
@@ -74,22 +75,45 @@
       </aside>
 
       <div id="right-sidebar">
+        <footer>
+          <div class="container-fluid form-space">
+            <form action="/channels/me" method="post" id="messagge-form">
+              <label for="message_content" class="message-content"
+                >社員検索</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="content"
+                  id="message_content"
+                  class="form-control"
+                  placeholder="ee000000 or name"
+                  required
+                />
+                <button class="btn btn-secondary">検索</button>
+              </div>
+            </form>
+          </div>
+        </footer>
+
         <div id="content-body">
           <h1>管理用ページ</h1>
           <div class="container-fluid">
             <div class="input-group">
-              <label for="employee_id_content" class="employee_id-content">
-                従業員id
-              </label>
-              <input
-                id="employee_id_content"
-                type="text"
-                name="emplyee_id"
-                placeholder="ee000000"
-                required
-              />
-              <button class="btn btn-secondary">検索</button>
-            </div>
+              <ul id="employee-list">
+                <% for (const employee of employees) { %>
+                <li>
+                  <div class="row">
+                    <div class="col-auto employee_id">
+                      <%= employee.employee_id %>
+                    </div>
+                    <div class="col-auto name"><%= employee.name %></div>
+                    <div class="col-auto position_id"><%= employee.position_id %></div>
+                    <button>削除</button>
+                  </div>
+                </li>
+                <% } %>
+              </ul>
           </div>
         </div>
       </div>
