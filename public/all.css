@@ -8,9 +8,14 @@
   float: right;
 }
 
-#logout {
+#mypage {
+  width: 100px;
   margin: 5px;
   float: right;
+}
+
+#logout {
+  margin: 5px;
 }
 
 header {
