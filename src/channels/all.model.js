@@ -63,7 +63,7 @@ const allModel = {
     await Message.create({
       content: reqData.content,
       channel_id: 1,
-      employee_id: "ee000000",
+      employee_id: req.session.id,
     });
     res.redirect("/channels/all");
   },
