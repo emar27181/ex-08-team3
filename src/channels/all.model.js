@@ -2,6 +2,7 @@ const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
 const Message = require("../db/model/message");
 const formatDate = require("./formatDate");
+const matchMyId = require("./matchMyId");
 
 const allModel = {
   displayMessage: async (req, res) => {
@@ -21,6 +22,7 @@ const allModel = {
         message_id: message.message_id,
         channel_id: message.channel_id,
         employee_id: message.employee_id,
+        who: matchMyId(message.employee_id, req.session.id),
       };
       formatedMessages.push(formatedMessage);
     }
