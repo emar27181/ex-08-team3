@@ -1,16 +1,18 @@
 .myrow {
-  display: inline-flex;
+  display: flex;
+  align-items: center;
 }
 
 #mem-edit {
+  height: 40px;
   width: 100px;
-  margin: 5px;
+  margin-right: 5px;
   float: right;
 }
 
 #mypage {
-  width: 100px;
-  margin: 5px;
+  width: 80px;
+  margin-right: 5px;
   float: right;
 }
 
@@ -44,9 +46,8 @@ header {
 #page-info {
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 10px;
-  padding-right: 0;
-  width: calc(100% - 160px);
+  margin-right: 5px;
+  width: calc(100% - 260px);
 }
 
 #page-info > div {
