@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer src="../index.js"></script>
+    <link href="../all.css" rel="stylesheet" />
+    <link href="../involve.css" rel="stylesheet" />
+
+    <title>管理用ページ</title>
+  </head>
+  <body>
+    <header>
+      <div class="myrow" id="header-content">
+        <button class="btn btn-dark" id="sidebar-disp">menu</button>
+        <div class="myrow" id="page-info">
+          <div class="col-auto" id="username">name: <%= user.name %></div>
+          <div class="col-auto" id="userid">ID: <%= user.employee_id %></div>
+          <div class="col-auto" id="this-channel">channel: 社員追加</div>
+        </div>
+        <form action="/logout" method="get" id="logout">
+          <button class="btn btn-light">logout</button>
+        </form>
+      </div>
+    </header>
+
+    <div id="below-header">
+      <aside class="open">
+        <div class="container-fluid">
+          <ul>
+            <li>
+              <div class="row">
+                <a href="/channel" class="channel btn" title="チャンネル作成"
+                  >+</a
+                >
+              </div>
+            </li>
+            <% for (const channel of channels) { %>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/<%= channel.name %>"
+                  class="channel initialism btn"
+                  data-bs-toggle="tooltip"
+                  data-bs-plaecment="right"
+                  title="<%= channel.name %>"
+                >
+                  <%= channel.name.charAt(0) %>
+                </a>
+              </div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </aside>
+
+      <div id="right-sidebar">
+        <div id="content-body">
+          <h1>
+            管理用ページ -社員追加-
+            <a href="/admin" id="back-to-mem-edit" class="btn btn-light">
+              戻る
+            </a>
+          </h1>
+          <div class="container-fluid">
+            <div class="input-newEmployee">
+              <div class="container-fluid form-space">
+                <form
+                  action="/admin/involve"
+                  method="post"
+                  id="newEmployee-form"
+                >
+                  <div class="input-newEmployee">
+                    <label for="employee_id_content" class="newEmployee-content"
+                      >社員id</label
+                    >
+                    <input
+                      type="text"
+                      name="employee_id"
+                      id="employee_id_content"
+                      placeholder="ee000000"
+                      required
+                    />
+                    <br />
+                    <label for="name_content" class="newEmployee-content"
+                      >社員名</label
+                    >
+                    <input
+                      type="text"
+                      name="name"
+                      id="name_content"
+                      placeholder="name"
+                      required
+                    />
+                    <br />
+                    <label for="password_content" class="newEmployee-content"
+                      >仮パスワード</label
+                    >
+                    <input
+                      type="text"
+                      name="password"
+                      id="password_content"
+                      placeholder="password"
+                      required
+                    />
+                    <br />
+                    <label
+                      ><input
+                        type="radio"
+                        name="position_id"
+                        value="1"
+                      />マネージャー</label
+                    ><br />
+                    <label
+                      ><input
+                        type="radio"
+                        name="position_id"
+                        value="2"
+                      />リーダー</label
+                    ><br />
+                    <label
+                      ><input
+                        type="radio"
+                        name="position_id"
+                        value="3"
+                        checked
+                      />社員</label
+                    ><br />
+                    <button class="btn btn-secondary">追加</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

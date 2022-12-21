@@ -38,7 +38,6 @@
             channel: 全体向けメッセージ
           </div>
         </div>
-        <a id="mem-add" class="btn btn-light"> 社員追加 </a>
         <form action="/logout" method="get" id="logout">
           <button class="btn btn-light">logout</button>
         </form>
@@ -98,7 +97,12 @@
         </footer>
 
         <div id="content-body">
-          <h1>管理用ページ</h1>
+          <h1>
+            管理用ページ
+            <a href="/admin/involve" id="mem-add" class="btn btn-light">
+              社員追加
+            </a>
+          </h1>
           <div class="container-fluid">
             <div class="input-group">
               <ul id="employee-list">
