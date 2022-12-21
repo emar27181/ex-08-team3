@@ -101,15 +101,18 @@
           <div class="container-fluid">
             <ul id="message-list">
               <% for (const message of messages) { %>
-              <li>
-                <div class="row">
-                  <div class="col-auto employee_id">
-                    <%= message.employee_id %>
+              <div class="myrow">
+                <div class="icon"></div>
+                <li>
+                  <div class="row">
+                    <div class="col-auto employee_id">
+                      <%= message.employee_id %>
+                    </div>
+                    <div class="col-auto time"><%= message.time %></div>
                   </div>
-                  <div class="col-auto time"><%= message.time %></div>
-                </div>
-                <div class="content"><%= message.content %></div>
-              </li>
+                  <div class="content"><%= message.content %></div>
+                </li>
+              </div>
               <% } %>
             </ul>
           </div>
