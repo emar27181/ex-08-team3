@@ -60,12 +60,12 @@
               <div class="row">
                 <a
                   href="/channels/<%= channel.name %>"
-                  class="channel initialism btn"
+                  class="channel btn"
                   data-bs-toggle="tooltip"
                   data-bs-plaecment="right"
                   title="<%= channel.name %>"
                 >
-                  <%= channel.name.charAt(0) %>
+                  <div class="ch-name"><%= channel.name %></div>
                 </a>
               </div>
             </li>
