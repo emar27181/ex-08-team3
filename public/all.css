@@ -146,9 +146,19 @@ ul#message-list > div > .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
   margin-bottom: 10px;
+}
+
+ul#message-list > div > .icon.other {
+  margin-right: 10px;
   background-color: #d6ebffd9;
+  order: 1;
+}
+
+ul#message-list > div > .icon.me {
+  margin-left: 10px;
+  background-color: #caffe6;
+  order: 5;
 }
 
 ul#message-list > div > li {
@@ -156,12 +166,18 @@ ul#message-list > div > li {
   margin-bottom: 10px;
   background-color: rgb(244 244 244);
   border-radius: 5px;
+  order: 3;
   transition-duration: 0.3s;
 }
 
 ul#message-list > div > li:hover {
   margin-bottom: 10px;
   background-color: rgb(220 220 220);
+}
+
+ul#message-list > div > .icon.me + li {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 ul#message-list > div > li > .row {
