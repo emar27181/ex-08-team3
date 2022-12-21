@@ -5,7 +5,8 @@
 
 #mem-edit {
   height: 40px;
-  width: 100px;
+  width: auto;
+  white-space: nowrap;
   margin-right: 5px;
   float: right;
 }
@@ -47,7 +48,7 @@ header {
   overflow-x: auto;
   overflow-y: hidden;
   margin-right: 5px;
-  width: calc(100% - 260px);
+  width: calc(100% - 160px);
 }
 
 #page-info > div {
