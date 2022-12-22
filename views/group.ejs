@@ -22,6 +22,7 @@
     ></script>
 
     <script defer src="../index.js"></script>
+    <script defer src="../messageCh.js"></script>
     <link href="../all.css" rel="stylesheet" />
 
     <title>グループ向けメッセージ</title>
@@ -42,7 +43,7 @@
     </header>
 
     <div id="below-header">
-      <aside class="open">
+      <aside class="close">
         <div class="container-fluid">
           <ul>
             <li>
@@ -57,12 +58,12 @@
               <div class="row">
                 <a
                   href="/channels/<%= channel.name %>"
-                  class="channel initialism btn"
+                  class="channel btn"
                   data-bs-toggle="tooltip"
                   data-bs-plaecment="right"
                   title="<%= channel.name %>"
                 >
-                  <%= channel.name.charAt(0) %>
+                  <div class="ch-name"><%= channel.name %></div>
                 </a>
               </div>
             </li>
@@ -98,15 +99,18 @@
           <div class="container-fluid">
             <ul id="message-list">
               <% for (const message of messages) { %>
-              <li>
-                <div class="row">
-                  <div class="col-auto employee_id">
-                    <%= message.employee_id %>
+              <div class="myrow">
+                <div class="icon <%= message.who %>"></div>
+                <li>
+                  <div class="row">
+                    <div class="col-auto employee_id">
+                      <%= message.employee_id %>
+                    </div>
+                    <div class="col-auto time"><%= message.time %></div>
                   </div>
-                  <div class="col-auto time"><%= message.time %></div>
-                </div>
-                <div class="content"><%= message.content %></div>
-              </li>
+                  <div class="content"><%= message.content %></div>
+                </li>
+              </div>
               <% } %>
             </ul>
           </div>

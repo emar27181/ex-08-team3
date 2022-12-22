@@ -43,7 +43,7 @@
     </header>
 
     <div id="below-header">
-      <aside class="open">
+      <aside class="close">
         <div class="container-fluid">
           <ul>
             <li>
@@ -58,12 +58,12 @@
               <div class="row">
                 <a
                   href="/channels/<%= channel.name %>"
-                  class="channel initialism btn"
+                  class="channel btn"
                   data-bs-toggle="tooltip"
                   data-bs-plaecment="right"
                   title="<%= channel.name %>"
                 >
-                  <%= channel.name.charAt(0) %>
+                  <div class="ch-name"><%= channel.name %></div>
                 </a>
               </div>
             </li>
@@ -114,7 +114,7 @@
                     <% if (employee.position_id === 1) { %> マネージャー <%
                     }else if (employee.position_id === 2) { %> リーダー <% }else
                     if (employee.position_id === 3) { %> 社員 <% } %>
-                    <button id="change-pposition">役職変更</button>
+                    <button id="change-position">役職変更</button>
                     <button id="mem-del">削除</button>
                   </div>
                 </li>
