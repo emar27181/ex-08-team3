@@ -9,12 +9,22 @@
   border: 1px solid #88c5ff;
 }
 
-#change-position {
+#change-position1 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-#mem-del {
+#change-position2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#mem-del1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#mem-del2 {
   margin-top: 5px;
   margin-bottom: 5px;
 }
