@@ -1,3 +1,4 @@
+const { Model } = require("sequelize");
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
 
@@ -49,6 +50,34 @@ const adminModel = {
       where: { employee_id: del },
     });
     user.destroy();
+    res.redirect("/admin");
+  },
+
+  changePosition: async (req, res) => {
+    const reqData = req.body;
+
+    let change = "";
+    for (const [, value] of Object.entries(reqData)) {
+      change = `${value}`;
+    }
+
+    /* await Employee.update(
+      { poition_id: 2 },{ where: { employee_id: change } }
+    ).then(()=>{ 
+      // 
+    }); */
+
+    const user = await Employee.findOne({
+      where: { employee_id: change },
+    });
+    if(user.position_id === 3){
+      user.position_id = 1;
+    }else if(user.position_id === 1){
+      user.position_id = 2;
+    }else if(user.position_id === 2){
+      user.position_id = 3;
+    }
+    user.save();
     res.redirect("/admin");
   },
 };
