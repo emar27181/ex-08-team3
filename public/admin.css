@@ -1,17 +1,22 @@
 #mem-add {
-  width: 100px;
-  margin: 5px;
+  background-color: #54b5ff;
+  border: 1px solid #54b5ff;
+  transition-duration: 0.3s;
+}
+
+#mem-add:hover {
   background-color: #88c5ff;
+  border: 1px solid #88c5ff;
 }
 
 #change-position {
-  width: 100px;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #mem-del {
-  width: 100px;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 ul#employee-list {
