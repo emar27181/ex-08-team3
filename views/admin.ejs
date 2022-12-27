@@ -111,6 +111,7 @@
                     action="/admin"
                     method="post"
                     id="delete-change-Employee-form"
+                    onsubmit="return beforeSubmit()"
                   >
                     <div class="row">
                       <div class="col-auto employee_id">
@@ -130,6 +131,9 @@
                           id="change-position"
                           name="p_change"
                           value="<%= String(employee.employee_id) %>"
+                          <% if (employee.position_id === 1) { %>
+                          disabled
+                          <% } %>
                         >
                           役職変更
                         </button>
@@ -140,10 +144,22 @@
                           id="mem-del"
                           name="m_delete"
                           value="<%= String(employee.employee_id) %>"
+                          <% if (employee.position_id === 1) { %>
+                          disabled
+                          <% } %>
                         >
                           削除
                         </button>
                       </div>
+                      <script>
+                        function beforeSubmit() {
+                          if(window.confirm('本当に変更しますか？')) {
+                            return true;
+                          } else {
+                            return false;
+                          }
+                        }
+                      </script>
                     </div>
                   </form>
                 </li>
