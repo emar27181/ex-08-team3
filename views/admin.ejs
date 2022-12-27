@@ -126,34 +126,52 @@
                     </div>
                     <div class="row">
                       <div class="col-auto">
+                        <% if (employee.position_id === 1) { %>
                         <button
                           class="btn btn-secondary"
-                          id="change-position"
+                          id="change-position1"
                           name="p_change"
                           value="<%= String(employee.employee_id) %>"
-                          <% if (employee.position_id === 1) { %>
                           disabled
-                          <% } %>
                         >
                           役職変更
                         </button>
+                        <% } else {%>
+                        <button
+                          class="btn btn-secondary"
+                          id="change-position2"
+                          name="p_change"
+                          value="<%= String(employee.employee_id) %>"
+                        >
+                          役職変更
+                        </button>
+                        <% } %>
                       </div>
                       <div class="col-auto">
+                        <% if (employee.position_id === 1) { %>
                         <button
                           class="btn btn-dark"
-                          id="mem-del"
+                          id="mem-del1"
                           name="m_delete"
                           value="<%= String(employee.employee_id) %>"
-                          <% if (employee.position_id === 1) { %>
                           disabled
-                          <% } %>
                         >
                           削除
                         </button>
+                        <% } else {%>
+                        <button
+                          class="btn btn-dark"
+                          id="mem-del2"
+                          name="m_delete"
+                          value="<%= String(employee.employee_id) %>"
+                        >
+                          削除
+                        </button>
+                        <% } %>
                       </div>
                       <script>
                         function beforeSubmit() {
-                          if(window.confirm('本当に変更しますか？')) {
+                          if (window.confirm("本当に変更しますか？")) {
                             return true;
                           } else {
                             return false;
