@@ -122,28 +122,12 @@
                       required
                     />
                     <br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="1"
-                      />マネージャー</label
-                    ><br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="2"
-                      />リーダー</label
-                    ><br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="3"
-                        checked
-                      />社員</label
-                    ><br />
+                    <label for="select-position">役職：</label>
+                    <select name="position_id" id="select-position">
+                      <option value="1">マネージャー</option>
+                      <option value="2">リーダー</option>
+                      <option value="3">社員</option>
+                    </select>
                     <button class="btn btn-secondary">追加</button>
                   </div>
                 </form>
