@@ -141,24 +141,44 @@ ul#message-list {
 }
 
 ul#message-list > div > .icon {
-  border-radius: 100%;
+  /* 幅 */
+  border-bottom: 25px solid #fff; /* 高さ */
+  border-left: 15px solid transparent; /* 左側下辺の伸び */
+  border-right: 15px solid transparent; /* 右側下辺の伸び */
+  box-sizing: border-box;
+  border-radius: 20%;
   height: 50px;
   width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
 }
+
+ul#message-list > div > .icon::before {
+  content: "";
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  background-color: #fff;
+}
+
+/*
+ul#message-list > div > .icon::after {
+  content: "";
+  border-radius: 20%;
+  height: 50px;
+  width: 50px;
+  border: 3px solid #2c3849;
+}
+*/
 
 ul#message-list > div > .icon.other {
   margin-right: 10px;
-  background-color: #d6ebffd9;
+  background-color: #860e16;
   order: 1;
 }
 
 ul#message-list > div > .icon.me {
   margin-left: 10px;
-  background-color: #caffe6;
+  background-color: #500e86;
   order: 5;
 }
 
