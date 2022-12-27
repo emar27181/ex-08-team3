@@ -160,6 +160,16 @@ ul#message-list > div > .icon::before {
   background-color: #fff;
 }
 
+/*
+ul#message-list > div > .icon::after {
+  content: "";
+  border-radius: 20%;
+  height: 50px;
+  width: 50px;
+  border: 3px solid #2c3849;
+}
+*/
+
 ul#message-list > div > .icon.other {
   margin-right: 10px;
   background-color: #d6ebffd9;
