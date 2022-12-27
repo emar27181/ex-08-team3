@@ -172,13 +172,13 @@ ul#message-list > div > .icon::after {
 
 ul#message-list > div > .icon.other {
   margin-right: 10px;
-  background-color: #d6ebffd9;
+  background-color: #860e16;
   order: 1;
 }
 
 ul#message-list > div > .icon.me {
   margin-left: 10px;
-  background-color: #caffe6;
+  background-color: #500e86;
   order: 5;
 }
 
