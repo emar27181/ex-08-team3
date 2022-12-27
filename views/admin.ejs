@@ -109,12 +109,14 @@
                   <div class="col-auto employee_id">
                     <%= employee.employee_id %>
                   </div>
-                  <div class="col-auto name"><%= employee.name %></div>
                   <div class="col-auto employee-position">
                     <% if (employee.position_id === 1) { %> マネージャー <% }
                     else if (employee.position_id === 2) { %> リーダー <% }else
                     if (employee.position_id === 3) { %> 社員 <% } %>
                   </div>
+                  <div class="col-auto name"><%= employee.name %></div>
+                </div>
+                <div class="row">
                   <div class="col-auto">
                     <button id="change-position">役職変更</button>
                   </div>
