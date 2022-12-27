@@ -24,6 +24,18 @@ const adminModel = {
       employees: formatedEmployees,
     });
   },
+
+  addMember: async (req, res) => {
+    const reqData = req.body;
+
+    await Employee.create({
+      employee_id: reqData.employee_id,
+      name: reqData.name,
+      password: reqData.password,
+      position_id: req.position_id,
+    });
+    res.redirect("/admin/involve");
+  },
 };
 
 module.exports = adminModel;
