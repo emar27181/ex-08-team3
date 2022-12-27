@@ -141,7 +141,12 @@ ul#message-list {
 }
 
 ul#message-list > div > .icon {
-  border-radius: 100%;
+  /* 幅 */
+  border-bottom: 25px solid #fff; /* 高さ */
+  border-left: 15px solid transparent; /* 左側下辺の伸び */
+  border-right: 15px solid transparent; /* 右側下辺の伸び */
+  box-sizing: border-box;
+  border-radius: 20%;
   height: 50px;
   width: 50px;
   display: flex;
