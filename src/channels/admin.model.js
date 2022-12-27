@@ -34,7 +34,7 @@ const adminModel = {
       password: reqData.password,
       position_id: reqData.position_id,
     });
-    res.redirect("/admin/involve");
+    res.redirect("/admin");
   },
 };
 
