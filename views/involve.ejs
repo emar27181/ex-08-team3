@@ -80,72 +80,58 @@
               戻る
             </a>
           </h1>
-          <div class="container-fluid">
-            <div class="input-newEmployee">
+          <div class="container">
+            <div class="input-new-employee">
               <div class="container-fluid form-space">
                 <form
                   action="/admin/involve"
                   method="post"
                   id="newEmployee-form"
                 >
-                  <div class="input-newEmployee">
-                    <label for="employee_id_content" class="newEmployee-content"
-                      >社員id</label
-                    >
-                    <input
-                      type="text"
-                      name="employee_id"
-                      id="employee_id_content"
-                      placeholder="ee000000"
-                      required
-                    />
-                    <br />
-                    <label for="name_content" class="newEmployee-content"
-                      >社員名</label
-                    >
-                    <input
-                      type="text"
-                      name="name"
-                      id="name_content"
-                      placeholder="name"
-                      required
-                    />
-                    <br />
-                    <label for="password_content" class="newEmployee-content"
-                      >仮パスワード</label
-                    >
-                    <input
-                      type="text"
-                      name="password"
-                      id="password_content"
-                      placeholder="password"
-                      required
-                    />
-                    <br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="1"
-                      />マネージャー</label
-                    ><br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="2"
-                      />リーダー</label
-                    ><br />
-                    <label
-                      ><input
-                        type="radio"
-                        name="position_id"
-                        value="3"
-                        checked
-                      />社員</label
-                    ><br />
-                    <button class="btn btn-secondary">追加</button>
-                  </div>
+                  <label for="employee_id_content" class="newEmployee-content"
+                    >社員id</label
+                  >
+                  <input
+                    type="text"
+                    name="employee_id"
+                    class="form-control"
+                    id="employee_id_content"
+                    placeholder="ee000000"
+                    required
+                  />
+                  <label for="name_content" class="newEmployee-content"
+                    >社員名</label
+                  >
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name_content"
+                    placeholder="name"
+                    required
+                  />
+                  <label for="password_content" class="newEmployee-content"
+                    >仮パスワード</label
+                  >
+                  <input
+                    type="text"
+                    name="password"
+                    class="form-control"
+                    id="password_content"
+                    placeholder="password"
+                    required
+                  />
+                  <label for="select-position">役職</label>
+                  <select
+                    class="form-select"
+                    name="position_id"
+                    id="select-position"
+                  >
+                    <option value="1">マネージャー</option>
+                    <option value="2">リーダー</option>
+                    <option value="3" selected>社員</option>
+                  </select>
+                  <button class="btn btn-dark">追加</button>
                 </form>
               </div>
             </div>

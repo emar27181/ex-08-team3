@@ -102,25 +102,36 @@
             </a>
           </h1>
           <div class="container-fluid">
-            <div class="input-group">
-              <ul id="employee-list">
-                <% for (const employee of employees) { %>
+            <ul id="employee-list">
+              <% for (const employee of employees) { %>
+              <div class="myrow">
+                <div class="icon"></div>
                 <li>
                   <div class="row">
                     <div class="col-auto employee_id">
                       <%= employee.employee_id %>
                     </div>
+                    <div class="col-auto employee-position">
+                      <% if (employee.position_id === 1) { %> マネージャー <% }
+                      else if (employee.position_id === 2) { %> リーダー <%
+                      }else if (employee.position_id === 3) { %> 社員 <% } %>
+                    </div>
                     <div class="col-auto name"><%= employee.name %></div>
-                    <% if (employee.position_id === 1) { %> マネージャー <%
-                    }else if (employee.position_id === 2) { %> リーダー <% }else
-                    if (employee.position_id === 3) { %> 社員 <% } %>
-                    <button id="change-position">役職変更</button>
-                    <button id="mem-del">削除</button>
+                  </div>
+                  <div class="row">
+                    <div class="col-auto">
+                      <button class="btn btn-secondary" id="change-position">
+                        役職変更
+                      </button>
+                    </div>
+                    <div class="col-auto">
+                      <button class="btn btn-dark" id="mem-del">削除</button>
+                    </div>
                   </div>
                 </li>
-                <% } %>
-              </ul>
-            </div>
+              </div>
+              <% } %>
+            </ul>
           </div>
         </div>
       </div>

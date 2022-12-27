@@ -1,5 +1,22 @@
 #back-to-mem-edit {
-  width: 100px;
-  margin: 5px;
+  background-color: #54b5ff;
+  border: 1px solid #54b5ff;
+  transition-duration: 0.3s;
+}
+
+#back-to-mem-edit:hover {
   background-color: #88c5ff;
+  border: 1px solid #88c5ff;
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+select {
+  margin-bottom: 5px;
+}
+
+body {
+  background-color: rgb(244 244 244);
 }
