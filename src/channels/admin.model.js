@@ -32,7 +32,7 @@ const adminModel = {
       employee_id: reqData.employee_id,
       name: reqData.name,
       password: reqData.password,
-      position_id: req.position_id,
+      position_id: reqData.position_id,
     });
     res.redirect("/admin/involve");
   },
