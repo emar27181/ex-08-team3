@@ -16,3 +16,7 @@ input {
 select {
   margin-bottom: 5px;
 }
+
+body {
+  background-color: rgb(244 244 244);
+}
