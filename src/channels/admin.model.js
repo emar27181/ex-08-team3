@@ -1,4 +1,3 @@
-const { Model } = require("sequelize");
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
 
@@ -38,46 +37,33 @@ const adminModel = {
     res.redirect("/admin");
   },
 
-  deleteMember: async (req, res) => {
+  editMember: async (req, res) => {
     const reqData = req.body;
 
-    let del = "";
-    for (const [, value] of Object.entries(reqData)) {
-      del = `${value}`;
-    }
-
-    const user = await Employee.findOne({
-      where: { employee_id: del },
-    });
-    user.destroy();
-    res.redirect("/admin");
-  },
-
-  changePosition: async (req, res) => {
-    const reqData = req.body;
-
+    let btnkey = "";
     let change = "";
-    for (const [, value] of Object.entries(reqData)) {
+    for (const [key, value] of Object.entries(reqData)) {
+      btnkey = `${key}`;
       change = `${value}`;
     }
-
-    /* await Employee.update(
-      { poition_id: 2 },{ where: { employee_id: change } }
-    ).then(()=>{ 
-      // 
-    }); */
-
-    const user = await Employee.findOne({
-      where: { employee_id: change },
-    });
-    if(user.position_id === 3){
-      user.position_id = 1;
-    }else if(user.position_id === 1){
-      user.position_id = 2;
-    }else if(user.position_id === 2){
-      user.position_id = 3;
+    if (btnkey === "p_change") {
+      const user = await Employee.findOne({
+        where: { employee_id: change },
+      });
+      if (user.position_id === 3) {
+        user.position_id = 1;
+      } else if (user.position_id === 1) {
+        user.position_id = 2;
+      } else if (user.position_id === 2) {
+        user.position_id = 3;
+      }
+      user.save();
+    } else if (btnkey === "m_delete") {
+      const user = await Employee.findOne({
+        where: { employee_id: change },
+      });
+      user.destroy();
     }
-    user.save();
     res.redirect("/admin");
   },
 };
