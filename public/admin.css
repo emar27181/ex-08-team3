@@ -25,15 +25,24 @@ ul#employee-list {
 }
 
 ul#employee-list > div > .icon {
-  border-radius: 100%;
+  margin-right: 10px;
+  border-bottom: 25px solid #fff;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  box-sizing: border-box;
   height: 50px;
   width: 50px;
-  background-color: #d6ebffd9;
-  margin-right: 10px;
+  border-radius: 20%;
+  background-color: #860e16;
+}
+
+ul#employee-list > div > .icon::before {
+  content: "";
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  background-color: #fff;
 }
 
 ul#employee-list > div > li {
