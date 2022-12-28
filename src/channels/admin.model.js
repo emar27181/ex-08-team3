@@ -37,18 +37,33 @@ const adminModel = {
     res.redirect("/admin");
   },
 
-  deleteMember: async (req, res) => {
+  editMember: async (req, res) => {
     const reqData = req.body;
 
-    let del = "";
-    for (const [, value] of Object.entries(reqData)) {
-      del = `${value}`;
+    let btnkey = "";
+    let change = "";
+    for (const [key, value] of Object.entries(reqData)) {
+      btnkey = `${key}`;
+      change = `${value}`;
     }
-
-    const user = await Employee.findOne({
-      where: { employee_id: del },
-    });
-    user.destroy();
+    if (btnkey === "p_change") {
+      const user = await Employee.findOne({
+        where: { employee_id: change },
+      });
+      if (user.position_id === 3) {
+        user.position_id = 1;
+      } else if (user.position_id === 1) {
+        user.position_id = 2;
+      } else if (user.position_id === 2) {
+        user.position_id = 3;
+      }
+      user.save();
+    } else if (btnkey === "m_delete") {
+      const user = await Employee.findOne({
+        where: { employee_id: change },
+      });
+      user.destroy();
+    }
     res.redirect("/admin");
   },
 };
