@@ -36,6 +36,21 @@ const adminModel = {
     });
     res.redirect("/admin");
   },
+
+  deleteMember: async (req, res) => {
+    const reqData = req.body;
+
+    let del = "";
+    for (const [, value] of Object.entries(reqData)) {
+      del = `${value}`;
+    }
+
+    const user = await Employee.findOne({
+      where: { employee_id: del },
+    });
+    user.destroy();
+    res.redirect("/admin");
+  },
 };
 
 module.exports = adminModel;

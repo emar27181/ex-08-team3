@@ -13,6 +13,7 @@ authRouter.get("/admin", all.displayAdmin);
 authRouter.get("/admin/involve", admin.displayInvolve);
 authRouter.get("/mypage", mypage.displayMypage);
 authRouter.post("/admin/involve", admin.addMember);
+authRouter.post("/admin", admin.deleteMember);
 
 authRouter.post("/login", async (req, res) => {
   const employee = req.body;
