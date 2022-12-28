@@ -51,8 +51,6 @@ const adminModel = {
         where: { employee_id: change },
       });
       if (user.position_id === 3) {
-        user.position_id = 1;
-      } else if (user.position_id === 1) {
         user.position_id = 2;
       } else if (user.position_id === 2) {
         user.position_id = 3;
