@@ -27,14 +27,25 @@ const adminModel = {
 
   addMember: async (req, res) => {
     const reqData = req.body;
+    const employees = await Employee.findAll();
+    let flag = true;
 
-    await Employee.create({
-      employee_id: reqData.employee_id,
-      name: reqData.name,
-      password: reqData.password,
-      position_id: reqData.position_id,
-    });
-    res.redirect("/admin");
+    for (const employee of employees) {
+      if (reqData.employee_id === employee.employee_id) {
+        flag = false;
+      }
+    }
+    if (flag) {
+      await Employee.create({
+        employee_id: reqData.employee_id,
+        name: reqData.name,
+        password: reqData.password,
+        position_id: reqData.position_id,
+      });
+      res.redirect("/admin");
+    } else {
+      res.redirect("/admin/involve");
+    }
   },
 
   editMember: async (req, res) => {
