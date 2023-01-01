@@ -85,30 +85,55 @@
             (user.position_id === 3) { %> position: 社員 <% } %>
           </div>
           <br />
-          <label for="new_name_content" class="message-content">new name</label>
-          <div class="input-new-name">
-            <input
-              type="text"
-              name="new-name"
-              id="new_name_content"
-              placeholder="name"
-              required
-            />
-            <button>変更</button><br />
-          </div>
-          <label for="new_password_content" class="message-content"
-            >new password</label
+          <form
+            action="/mypage"
+            method="post"
+            id="change-myname-form"
+            onsubmit="return beforeSubmit()"
           >
-          <div class="input-new-password">
-            <input
-              type="text"
-              name="new-password"
-              id="new_password_content"
-              placeholder="password"
-              required
-            />
-            <button>変更</button><br />
-          </div>
+            <label for="new_name_content" class="message-content"
+              >new name</label
+            >
+            <div class="input-new-name">
+              <input
+                type="text"
+                name="new_name"
+                id="new_name_content"
+                placeholder="name"
+                required
+              />
+              <button>変更</button><br />
+            </div>
+          </form>
+          <form
+            action="/mypage"
+            method="post"
+            id="change-mypassword-form"
+            onsubmit="return beforeSubmit()"
+          >
+            <label for="new_password_content" class="message-content"
+              >new password</label
+            >
+            <div class="input-new-password">
+              <input
+                type="text"
+                name="new_password"
+                id="new_password_content"
+                placeholder="password"
+                required
+              />
+              <button>変更</button><br />
+            </div>
+          </form>
+          <script>
+            function beforeSubmit() {
+              if (window.confirm("本当に変更しますか？")) {
+                return true;
+              } else {
+                return false;
+              }
+            }
+          </script>
           <form action="/logout" method="get" id="logout">
             <button class="btn btn-light">logout</button>
           </form>
