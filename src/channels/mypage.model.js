@@ -24,6 +24,23 @@ const mypageModel = {
       employees: formatedEmployees,
     });
   },
+
+  editMe: async (req, res) => {
+    const reqData = req.body;
+    const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+
+    if (reqData.new_name !== user.new_name) {
+      user.name = reqData.new_name;
+      user.save();
+    }
+    if (reqData.new_password !== user.new_password) {
+      user.password = reqData.new_password;
+      user.save();
+    }
+    res.redirect("/mypage");
+  },
 };
 
 module.exports = mypageModel;
