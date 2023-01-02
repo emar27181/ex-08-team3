@@ -1,12 +1,16 @@
 const Channel = require("../../db/model/channnel");
 const Employee = require("../../db/model/employee");
 const Message = require("../../db/model/message");
+const Member = require("../../db/model/member");
 const formatDate = require("../formatDate");
 const matchMyId = require("../matchMyId");
 
 const groupModel = {
   displayGruopPage: async (req, res) => {
     const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    const ch = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
@@ -30,6 +34,7 @@ const groupModel = {
     }
     res.render("group", {
       user,
+      ch,
       channels,
       chname,
       messages: formatedMessages,
