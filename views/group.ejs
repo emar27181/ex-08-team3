@@ -77,7 +77,11 @@
       <div id="right-sidebar">
         <footer>
           <div class="container-fluid form-space">
-            <form action="/channels/group" method="post" id="messagge-form">
+            <form
+              action="/channels/<%= chname.name %>"
+              method="post"
+              id="messagge-form"
+            >
               <label for="message_content" class="message-content"
                 >メッセージ</label
               >
