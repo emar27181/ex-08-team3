@@ -7,12 +7,17 @@ const makeChannelModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
+    const ch = await Member.findAll({
+      where: { employee_id: req.session.id },
+    });
     const channels = await Channel.findAll();
     res.render("channel", {
       user,
+      ch,
       channels,
     });
   },
+
   addChannel: async (req, res) => {
     const reqData = req.body;
 
