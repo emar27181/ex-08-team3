@@ -76,14 +76,14 @@ const createChannel = async () => {
     name: "all",
   });
   const all = await Channel.findOne({
-    where: {name: "all"},
+    where: { name: "all" },
   });
 
   await Channel.create({
     name: "me",
   });
   const me = await Channel.findOne({
-    where: {name: "me"},
+    where: { name: "me" },
   });
 
   await Member.create({
