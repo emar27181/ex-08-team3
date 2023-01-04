@@ -21,12 +21,12 @@ const makeChannelModel = {
   addChannel: async (req, res) => {
     const reqData = req.body;
 
-    await Channel.create({
+    const chacha = await Channel.create({
       name: reqData.channel,
     });
-    const chacha = await Channel.findOne({
-      where: { name: reqData.channel },
-    });
+    // const chacha = await Channel.findOne({
+    //   where: { name: reqData.channel },
+    // });
     await Member.create({
       channel_id: chacha.channel_id,
       employee_id: req.session.id,
