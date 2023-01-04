@@ -14,3 +14,7 @@
 #user-info > div:hover {
   background-color: rgb(220 220 220);
 }
+
+#logout {
+  margin-top: 20px;
+}
