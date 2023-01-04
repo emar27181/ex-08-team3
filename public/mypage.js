@@ -10,4 +10,9 @@ const beforeSubmit = (event) => {
 };
 
 nameForm.addEventListener("submit", beforeSubmit);
-passwordForm.addEventListener("submit", beforeSubmit);
+passwordForm.addEventListener("submit", beforeSubmit).children;
+
+const eye = document.querySelector(".clairvoyance");
+const clairvoyance = require("./src/clairvoyance");
+
+eye.addEventListener("click", clairvoyance(eye));
