@@ -10,6 +10,6 @@ channelsRouter.get("/all", all.displayMessage);
 channelsRouter.post("/all", all.addMessage);
 channelsRouter.get("/me", me.displayDM);
 
-channelsRouter.use("/group", groupRouter);
+channelsRouter.use("/:id", groupRouter);
 
 module.exports = channelsRouter;

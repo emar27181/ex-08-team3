@@ -1,5 +1,6 @@
 const Channel = require("./model/channnel");
 const Employee = require("./model/employee");
+const Member = require("./model/member");
 const Message = require("./model/message");
 const Position = require("./model/position");
 
@@ -74,12 +75,45 @@ const createChannel = async () => {
   await Channel.create({
     name: "all",
   });
+  const all = await Channel.findOne({
+    where: { name: "all" },
+  });
+
   await Channel.create({
     name: "me",
   });
-  await Channel.create({
-    name: "group",
+  const me = await Channel.findOne({
+    where: { name: "me" },
   });
+
+  await Member.create({
+    employee_id: "ee000000",
+    channel_id: all.channel_id,
+  });
+  await Member.create({
+    employee_id: "ee111111",
+    channel_id: all.channel_id,
+  });
+  await Member.create({
+    employee_id: "ee333333",
+    channel_id: all.channel_id,
+  });
+  await Member.create({
+    employee_id: "ee000000",
+    channel_id: me.channel_id,
+  });
+  await Member.create({
+    employee_id: "ee111111",
+    channel_id: me.channel_id,
+  });
+  await Member.create({
+    employee_id: "ee333333",
+    channel_id: me.channel_id,
+  });
+
+  // await Channel.create({
+  //   name: "group",
+  // });
 };
 
 const createMessage = async () => {
@@ -109,18 +143,18 @@ const createMessage = async () => {
     channel_id: 2,
   });
 
-  await Message.create({
-    content: "initial message(channel_id=3)",
-    time: new Date(),
-    employee_id: "ee000000",
-    channel_id: 3,
-  });
-  await Message.create({
-    content: "second message(channel_id=3)",
-    time: new Date(),
-    employee_id: "ee111111",
-    channel_id: 3,
-  });
+  // await Message.create({
+  //   content: "initial message(channel_id=3)",
+  //   time: new Date(),
+  //   employee_id: "ee000000",
+  //   channel_id: 3,
+  // });
+  // await Message.create({
+  //   content: "second message(channel_id=3)",
+  //   time: new Date(),
+  //   employee_id: "ee111111",
+  //   channel_id: 3,
+  // });
 };
 
 module.exports = createInitialData;

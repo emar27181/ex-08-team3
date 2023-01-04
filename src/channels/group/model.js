@@ -1,6 +1,7 @@
 const Channel = require("../../db/model/channnel");
 const Employee = require("../../db/model/employee");
 const Message = require("../../db/model/message");
+const Member = require("../../db/model/member");
 const formatDate = require("../formatDate");
 const matchMyId = require("../matchMyId");
 
@@ -9,9 +10,15 @@ const groupModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
+    const ch = await Member.findAll({
+      where: { employee_id: req.session.id },
+    });
     const channels = await Channel.findAll();
+    const chname = await Channel.findOne({
+      where: { name: req.params.id },
+    });
     const messages = await Message.findAll({
-      where: { channel_id: 3 },
+      where: { channel_id: chname.channel_id },
     });
     const formatedMessages = [];
     for (const message of messages) {
@@ -27,17 +34,22 @@ const groupModel = {
     }
     res.render("group", {
       user,
+      ch,
       channels,
+      chname,
       messages: formatedMessages,
     });
   },
 
   addMessage: async (req, res, next) => {
     const reqData = req.body;
+    const chname = await Channel.findOne({
+      where: { name: req.params.id },
+    });
 
     await Message.create({
       content: reqData.content,
-      channel_id: 3,
+      channel_id: chname.channel_id,
       employee_id: req.session.id,
     });
 

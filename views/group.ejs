@@ -40,6 +40,9 @@
             channel: グループ向けメッセージ
           </div>
         </div>
+        <% if (user.position_id === 1) {%>
+        <a href="/admin" id="mem-edit" class="btn btn-light"> member管理 </a>
+        <% } %>
         <a href="/mypage" id="mypage" class="btn btn-light"> MyPage </a>
       </div>
     </header>
@@ -55,7 +58,8 @@
                 >
               </div>
             </li>
-            <% for (const channel of channels) { %>
+            <% for (const mem of ch) { %> <% for (const channel of channels) {
+            %> <% if ( mem.channel_id === channel.channel_id) {%>
             <li>
               <div class="row">
                 <a
@@ -69,7 +73,7 @@
                 </a>
               </div>
             </li>
-            <% } %>
+            <% } %> <% } %> <% } %>
           </ul>
         </div>
       </aside>
@@ -77,7 +81,11 @@
       <div id="right-sidebar">
         <footer>
           <div class="container-fluid form-space">
-            <form action="/channels/group" method="post" id="messagge-form">
+            <form
+              action="/channels/<%= chname.name %>"
+              method="post"
+              id="messagge-form"
+            >
               <label for="message_content" class="message-content"
                 >メッセージ</label
               >
