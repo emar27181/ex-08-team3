@@ -15,6 +15,18 @@
   background-color: rgb(220 220 220);
 }
 
+header {
+  z-index: 3;
+}
+
+aside {
+  z-index: 2;
+}
+
+.input-group {
+  z-index: 1;
+}
+
 #logout {
   margin-top: 20px;
 }
