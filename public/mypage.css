@@ -1,0 +1,12 @@
+#user-info > div {
+  font-size: large;
+  background-color: rgb(244 244 244);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+#user-info > div:hover {
+  background-color: rgb(220 220 220);
+}
