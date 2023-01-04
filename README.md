@@ -29,7 +29,7 @@
 
 このチャットウェブアプリケーションを利用するには事前に登録されている社員 ID とパスワードを入力してログインする必要があります。
 
-![loginPage](/uploads/7cb70f30cd80449aa8cc8ae7727878df/loginPage.png)
+<img src = "/uploads/7cb70f30cd80449aa8cc8ae7727878df/loginPage.png)" width = "300">
 
 <br>
 
@@ -37,25 +37,25 @@
 
 全体向けメッセージでは会社内に伝達したいメッセージを記載されています。
 
-![entrancePage](/uploads/72fa595bf8fd64c0bd60284585974ac5/entrancePage.png)
+<img src = "/uploads/72fa595bf8fd64c0bd60284585974ac5/entrancePage.png" width = "300">
 
 <br>
 
 左上のメニューボタンを押すことでメニューバーが表示され、他のチャットへ遷移することができます。
 
-![menuPage](/uploads/8979ae5184cbe7146846132241d5ea7c/menuPage.png)
+<img src = "/uploads/8979ae5184cbe7146846132241d5ea7c/menuPage.png" width = "300">
 
 <br>
 
 右上のマイページボタンを押すことでマイページへ移動し、個人情報の確認/変更ができます。
 
-![adminPage](/uploads/808600159e8a203e64c3b9d6c4fe13bb/adminPage.png)
+<img src = "/uploads/a764b5d5e636e55c190ca15c82021636/myPage.png" width = "300">
 
 <br>
 
 マネージャーの人のみ右上に社員管理のボタンを押すことができ、管理用ページで社員の追加/役職変更/削除を行うことができます。
 
-![menuPage](/uploads/8979ae5184cbe7146846132241d5ea7c/menuPage.png)
+<img src = "/uploads/808600159e8a203e64c3b9d6c4fe13bb/adminPage.png" width = "300">
 
 <br>
 
