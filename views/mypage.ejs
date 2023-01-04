@@ -22,6 +22,7 @@
     ></script>
 
     <script defer src="../index.js"></script>
+    <script defer src="../mypage.js"></script>
     <link href="../all.css" rel="stylesheet" />
     <link href="../mypage.css" rel="stylesheet" />
 
@@ -79,12 +80,7 @@
           <div class="container-fuild" id="user-info">
             <div>
               <label for="employee-name">Name</label>
-              <form
-                action="/mypage"
-                method="post"
-                id="name-form"
-                onsubmit="return beforeSubmit()"
-              >
+              <form action="/mypage" method="post" id="name-form">
                 <div class="input-group">
                   <input
                     type="text"
@@ -95,7 +91,7 @@
                     placeholder="name"
                     required
                   />
-                  <button class="btn btn-secondary">変更</button>
+                  <button class="btn btn-secondary" type="submit">変更</button>
                 </div>
               </form>
             </div>
@@ -105,12 +101,7 @@
             </div>
             <div>
               <label for="employee-password">Password</label>
-              <form
-                action="/mypage"
-                method="post"
-                id="password-form"
-                onsubmit="return beforeSubmit()"
-              >
+              <form action="/mypage" method="post" id="password-form">
                 <div class="input-group">
                   <input
                     type="text"
@@ -121,7 +112,7 @@
                     placeholder="password"
                     required
                   />
-                  <button class="btn btn-secondary">変更</button>
+                  <button class="btn btn-secondary" type="submit">変更</button>
                 </div>
               </form>
             </div>
@@ -134,15 +125,6 @@
               </div>
             </div>
           </div>
-          <script>
-            function beforeSubmit() {
-              if (window.confirm("本当に変更しますか？")) {
-                return true;
-              } else {
-                return false;
-              }
-            }
-          </script>
           <form action="/logout" method="get" id="logout">
             <button class="btn btn-dark">logout</button>
           </form>
