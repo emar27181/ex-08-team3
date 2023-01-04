@@ -42,6 +42,15 @@ header {
 #sidebar-disp {
   margin: 5px;
   height: 40px;
+  width: 50px;
+  white-space: normal;
+}
+
+#sidebar-disp > span {
+  line-height: 5px;
+  font-size: large;
+  display: block;
+  transform: scaleX(5);
 }
 
 #page-info {
@@ -141,22 +150,36 @@ ul#message-list {
 }
 
 ul#message-list > div > .icon {
-  border-bottom: 25px solid #fff;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
   box-sizing: border-box;
+  border: 3px solid #2c3849;
   border-radius: 20%;
   height: 50px;
   width: 50px;
+  padding: 4px;
 }
 
 ul#message-list > div > .icon::before {
   content: "";
+  display: flex;
+  border: 3px solid white;
   border-radius: 50%;
   height: 20px;
   width: 20px;
+  margin-left: 8px;
+  background-color: white;
+}
+
+ul#message-list > div > .icon::after {
+  content: "";
   display: flex;
-  background-color: #fff;
+  border: 3px solid white;
+  border-radius: 40%;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  margin-top: 2px;
+  padding-bottom: calc(20px - 8px);
+  padding-right: calc(50px - 3px * 4 - 4px * 2);
+  background-color: white;
 }
 
 ul#message-list > div > .icon.other {
