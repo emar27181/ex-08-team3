@@ -77,13 +77,25 @@
         <div id="content-body">
           <h1>マイページ</h1>
           <div class="container-fuild" id="user-info">
-            <div>name: <%= user.name %></div>
-            <div>ID: <%= user.employee_id %></div>
-            <div>password: <%= user.password %></div>
             <div>
-              <% if(user.position_id === 1) { %> position: マネージャー <% }
-              else if (user.position_id === 2) { %> position: リーダー <% } else
-              if (user.position_id === 3) { %> position: 社員 <% } %>
+              <label for="employee-name">Name</label>
+              <div id="employee-name"><%= user.name %></div>
+            </div>
+            <div>
+              <label for="employee-id">ID</label>
+              <div id="employee-id"><%= user.employee_id %></div>
+            </div>
+            <div>
+              <label for="employee-password">Password</label>
+              <div id="employee-password"><%= user.password %></div>
+            </div>
+            <div>
+              <label for="employee-position">Position</label>
+              <div id="employee-position">
+                <% if(user.position_id === 1) { %> マネージャー <% } else if
+                (user.position_id === 2) { %> リーダー <% } else if
+                (user.position_id === 3) { %> 社員 <% } %>
+              </div>
             </div>
             <form
               action="/mypage"
