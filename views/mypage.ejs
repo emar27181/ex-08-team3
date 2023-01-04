@@ -79,7 +79,25 @@
           <div class="container-fuild" id="user-info">
             <div>
               <label for="employee-name">Name</label>
-              <div id="employee-name"><%= user.name %></div>
+              <form
+                action="/mypage"
+                method="post"
+                id="name-form"
+                onsubmit="return beforeSubmit()"
+              >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="new_name"
+                    value="<%= user.name %>"
+                    class="form-control"
+                    id="employee-name"
+                    placeholder="name"
+                    required
+                  />
+                  <button class="btn btn-secondary">変更</button>
+                </div>
+              </form>
             </div>
             <div>
               <label for="employee-id">ID</label>
@@ -87,7 +105,25 @@
             </div>
             <div>
               <label for="employee-password">Password</label>
-              <div id="employee-password"><%= user.password %></div>
+              <form
+                action="/mypage"
+                method="post"
+                id="password-form"
+                onsubmit="return beforeSubmit()"
+              >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="new_password"
+                    value="<%= user.password %>"
+                    class="form-control"
+                    id="employee-password"
+                    placeholder="password"
+                    required
+                  />
+                  <button class="btn btn-secondary">変更</button>
+                </div>
+              </form>
             </div>
             <div>
               <label for="employee-position">Position</label>
@@ -97,46 +133,6 @@
                 (user.position_id === 3) { %> 社員 <% } %>
               </div>
             </div>
-            <form
-              action="/mypage"
-              method="post"
-              id="change-myname-form"
-              onsubmit="return beforeSubmit()"
-            >
-              <label for="new_name_content" class="message-content"
-                >new name</label
-              >
-              <div class="input-new-name">
-                <input
-                  type="text"
-                  name="new_name"
-                  id="new_name_content"
-                  placeholder="name"
-                  required
-                />
-                <button>変更</button>
-              </div>
-            </form>
-            <form
-              action="/mypage"
-              method="post"
-              id="change-mypassword-form"
-              onsubmit="return beforeSubmit()"
-            >
-              <label for="new_password_content" class="message-content"
-                >new password</label
-              >
-              <div class="input-new-password">
-                <input
-                  type="text"
-                  name="new_password"
-                  id="new_password_content"
-                  placeholder="password"
-                  required
-                />
-                <button>変更</button>
-              </div>
-            </form>
           </div>
           <script>
             function beforeSubmit() {
