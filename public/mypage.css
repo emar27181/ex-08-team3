@@ -19,6 +19,15 @@
   padding-left: 10px;
 }
 
+.clairvoyance {
+  position: absolute;
+  top: 5px;
+  right: 70px;
+  border: 0;
+  background-color: transparent;
+  z-index: 5;
+}
+
 header {
   z-index: 3;
 }
