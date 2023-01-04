@@ -42,6 +42,7 @@ ul#employee-list > div > .icon {
   height: 50px;
   width: 50px;
   padding: 4px;
+  margin-right: 10px;
 }
 
 ul#employee-list > div > .icon::before {
