@@ -10,8 +10,11 @@
 }
 
 #change-position1 {
+  background-color: #a5aeb5;
+  border-color: #a5aeb5;
   margin-top: 5px;
   margin-bottom: 5px;
+  pointer-events: none;
 }
 
 #change-position2 {
@@ -20,8 +23,11 @@
 }
 
 #mem-del1 {
+  background-color: #40474d;
+  border-color: #40474d;
   margin-top: 5px;
   margin-bottom: 5px;
+  pointer-events: none;
 }
 
 #mem-del2 {
@@ -71,6 +77,7 @@ ul#employee-list > div > .icon::after {
 
 ul#employee-list > div > li {
   width: 100%;
+  padding-left: 5px;
   margin-bottom: 10px;
   background-color: rgb(244 244 244);
   border-radius: 5px;
