@@ -1,0 +1,47 @@
+#user-info > div {
+  font-size: large;
+  background-color: rgb(244 244 244);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+#user-info > div:hover {
+  background-color: rgb(220 220 220);
+}
+
+#user-info > div > label {
+  text-decoration: underline;
+}
+
+#user-info > div > div:not(.input-group) {
+  padding-left: 10px;
+}
+
+.clairvoyance {
+  position: absolute;
+  top: 5px;
+  right: 70px;
+  border: 0;
+  background-color: transparent;
+  z-index: 5;
+}
+
+header {
+  z-index: 3;
+}
+
+aside {
+  z-index: 2;
+}
+
+.input-group {
+  z-index: 1;
+}
+
+#logout {
+  position: absolute;
+  right: 10px;
+  margin-top: 20px;
+}

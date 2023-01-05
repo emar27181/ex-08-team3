@@ -13,6 +13,12 @@
       crossorigin="anonymous"
     />
 
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+
     <!-- Bootstrap Bundle with Popper -->
     <script
       defer
@@ -22,7 +28,9 @@
     ></script>
 
     <script defer src="../index.js"></script>
+    <script defer src="../mypage.js"></script>
     <link href="../all.css" rel="stylesheet" />
+    <link href="../mypage.css" rel="stylesheet" />
 
     <title>マイページ</title>
   </head>
@@ -75,69 +83,59 @@
       <div id="right-sidebar">
         <div id="content-body">
           <h1>マイページ</h1>
-          <div>name: <%= user.name %></div>
-          <br />
-          <div>ID: <%= user.employee_id %></div>
-          <br />
-          <div>password: <%= user.password %></div>
-          <br />
-          <div>
-            <% if(user.position_id === 1) { %> position: マネージャー <% } else
-            if (user.position_id === 2) { %> position: リーダー <% } else if
-            (user.position_id === 3) { %> position: 社員 <% } %>
+          <div class="container-fuild" id="user-info">
+            <div>
+              <label for="employee-name">Name</label>
+              <form action="/mypage" method="post" id="name-form">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="new_name"
+                    value="<%= user.name %>"
+                    class="form-control"
+                    id="employee-name"
+                    placeholder="name"
+                    required
+                  />
+                  <button class="btn btn-secondary" type="submit">変更</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <label for="employee-id">ID</label>
+              <div id="employee-id"><%= user.employee_id %></div>
+            </div>
+            <div>
+              <label for="employee-password">Password</label>
+              <form action="/mypage" method="post" id="password-form">
+                <div class="input-group">
+                  <input
+                    type="password"
+                    name="new_password"
+                    value="<%= user.password %>"
+                    class="form-control"
+                    id="employee-password"
+                    placeholder="password"
+                    required
+                  />
+                  <span class="clairvoyance"
+                    ><i class="bi bi-eye-fill"></i
+                  ></span>
+                  <button class="btn btn-secondary" type="submit">変更</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <label for="employee-position">Position</label>
+              <div id="employee-position">
+                <% if(user.position_id === 1) { %> マネージャー <% } else if
+                (user.position_id === 2) { %> リーダー <% } else if
+                (user.position_id === 3) { %> 社員 <% } %>
+              </div>
+            </div>
           </div>
-          <br />
-          <form
-            action="/mypage"
-            method="post"
-            id="change-myname-form"
-            onsubmit="return beforeSubmit()"
-          >
-            <label for="new_name_content" class="message-content"
-              >new name</label
-            >
-            <div class="input-new-name">
-              <input
-                type="text"
-                name="new_name"
-                id="new_name_content"
-                placeholder="name"
-                required
-              />
-              <button>変更</button><br />
-            </div>
-          </form>
-          <form
-            action="/mypage"
-            method="post"
-            id="change-mypassword-form"
-            onsubmit="return beforeSubmit()"
-          >
-            <label for="new_password_content" class="message-content"
-              >new password</label
-            >
-            <div class="input-new-password">
-              <input
-                type="text"
-                name="new_password"
-                id="new_password_content"
-                placeholder="password"
-                required
-              />
-              <button>変更</button><br />
-            </div>
-          </form>
-          <script>
-            function beforeSubmit() {
-              if (window.confirm("本当に変更しますか？")) {
-                return true;
-              } else {
-                return false;
-              }
-            }
-          </script>
           <form action="/logout" method="get" id="logout">
-            <button class="btn btn-light">logout</button>
+            <button class="btn btn-dark">logout</button>
           </form>
         </div>
       </div>
