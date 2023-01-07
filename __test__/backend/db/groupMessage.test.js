@@ -129,7 +129,7 @@ describe("messages table test", () => {
         id: 13579086,
         content: "delete test 1-1",
         GroupId: 2,
-        employee_id: "aa111111",
+        EmployeeId: "aa111111",
       });
       await GroupMessage.create({
         id: 12345678,
@@ -191,10 +191,10 @@ describe("messages table test", () => {
         EmployeeId: "aa111111",
       });
       await GroupMessage.create({
-        message_id: 45678901,
-        content: "delete test 3-4",
         id: 45678901,
-        employee_id: "aa000000",
+        content: "delete test 3-4",
+        GroupId: 3,
+        Employeeid: "aa000000",
       });
       await GroupMessage.destroy({
         where: {
