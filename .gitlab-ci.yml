@@ -27,7 +27,6 @@ deploy:
     - npm install
     - npm run delete
     - npm run build
-    - npm run connect
     - npm run start
   stage: deploy
   tags:
