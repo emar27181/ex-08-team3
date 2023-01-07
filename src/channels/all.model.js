@@ -53,6 +53,9 @@ const allModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
+    const channelsJoin = await Member.findAll({
+      where: { employee_id: req.session.id },
+    });
     await Message.sync();
     const channels = await Channel.findAll();
     const employees = await Employee.findAll();
@@ -68,6 +71,7 @@ const allModel = {
     }
     res.render("admin", {
       user,
+      channelsJoin,
       channels,
       employees: formatedEmployees,
     });
