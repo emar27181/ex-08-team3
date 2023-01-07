@@ -39,7 +39,7 @@ const Employee = sequelize.define("Employee", {
   },
 });
 
-// PositionテーブルｔｐEmployeeテーブルの関連付け
+// PositionテーブルとEmployeeテーブルの関連付け
 // 一対多
 Position.hasMany(Employee, {
   foreignKey: {
@@ -48,7 +48,21 @@ Position.hasMany(Employee, {
 });
 Employee.belongsTo(Position);
 
+const AllMessage = sequelize.define("AllMessage", {
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no content",
+  },
+});
+
+// EmployeeとGroupMessageの関連付け
+// 一対多
+Employee.hasMany(AllMessage);
+AllMessage.belongsTo(Employee);
+
 module.exports = {
   Position,
   Employee,
+  AllMessage,
 };
