@@ -1,147 +1,147 @@
-const Channel = require("../../../src/db/model/channnel");
+const { Group } = require("../../../src/db/model");
 
 describe("database: channel table test", () => {
   beforeEach(async () => {
-    await Channel.sync({ force: true });
+    await Group.sync({ force: true });
   });
 
   describe("create channel test", () => {
     it("チャンネル作成", async () => {
-      const channel = await Channel.create({
+      const group = await Group.create({
         name: "todoアプリプロジェクト",
       });
-      expect(channel.channel_id).toBe(1);
-      expect(channel.name).toBe("todoアプリプロジェクト");
+      expect(group.id).toBe(1);
+      expect(group.name).toBe("todoアプリプロジェクト");
     });
     it("チャンネルの名前指定なしで作成", async () => {
-      const channel = await Channel.create({});
-      expect(channel.channel_id).toBe(1);
-      expect(channel.name).toBe("no name");
+      const group = await Group.create({});
+      expect(group.id).toBe(1);
+      expect(group.name).toBe("no name");
     });
     it("idの確認", async () => {
-      await Channel.create({
+      await Group.create({
         name: "チャットアプリプロジェクト",
       });
-      const channel = await Channel.create({});
-      expect(channel.channel_id).toBe(2);
-      expect(channel.name).toBe("no name");
+      const group = await Group.create({});
+      expect(group.id).toBe(2);
+      expect(group.name).toBe("no name");
     });
   });
 
   describe("find channel test", () => {
     it("チャンネルの取り出し", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hoge",
       });
-      const channels = await Channel.findAll();
-      expect(channels[0].channel_id).toBe(1);
-      expect(channels[0].name).toBe("hoge");
+      const groups = await Group.findAll();
+      expect(groups[0].id).toBe(1);
+      expect(groups[0].name).toBe("hoge");
     });
     it("複数のタスクの取り出し", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hogehoge",
       });
-      await Channel.create({
+      await Group.create({
         name: "fuga",
       });
-      const channels = await Channel.findAll();
-      const total = await Channel.count();
-      expect(channels[1].channel_id).toBe(2);
-      expect(channels[1].name).toBe("fuga");
+      const groups = await Group.findAll();
+      const total = await Group.count();
+      expect(groups[1].id).toBe(2);
+      expect(groups[1].name).toBe("fuga");
       expect(total).toBe(2);
     });
     it("取り出し条件を指定", async () => {
-      await Channel.create({
+      await Group.create({
         name: "foo",
       });
-      await Channel.create({
+      await Group.create({
         name: "bar",
       });
-      const channel = await Channel.findOne({
+      const group = await Group.findOne({
         where: {
-          channel_id: 2,
+          id: 2,
         },
       });
-      expect(channel.name).toBe("bar");
+      expect(group.name).toBe("bar");
     });
   });
 
   describe("delete test", () => {
     it("タスクの取り消し", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hogehoge",
       });
-      await Channel.destroy({ truncate: true });
-      const count = await Channel.count();
+      await Group.destroy({ truncate: true });
+      const count = await Group.count();
       expect(count).toBe(0);
     });
     it("channelのidを指定して削除", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hogehoge",
       });
-      await Channel.create({
+      await Group.create({
         name: "hogegehoge",
       });
-      await Channel.destroy({
+      await Group.destroy({
         where: {
-          channel_id: 1,
+          id: 1,
         },
       });
-      const count = await Channel.count();
-      const channels = await Channel.findAll();
-      expect(channels[0].channel_id).toBe(2);
+      const count = await Group.count();
+      const channels = await Group.findAll();
+      expect(channels[0].id).toBe(2);
       expect(channels[0].name).toBe("hogegehoge");
       expect(count).toBe(1);
     });
     it("nameを指定して削除", async () => {
-      await Channel.create({
+      await Group.create({
         name: "foooo",
       });
-      await Channel.create({
+      await Group.create({
         name: "barrrrrr",
       });
-      await Channel.create({
+      await Group.create({
         name: "bazzzzzzz",
       });
-      await Channel.destroy({
+      await Group.destroy({
         where: {
           name: "bazzzzzzz",
         },
       });
-      const count = await Channel.count();
-      const channels = await Channel.findAll();
-      expect(channels[1].channel_id).toBe(2);
+      const count = await Group.count();
+      const groups = await Group.findAll();
+      expect(groups[1].id).toBe(2);
       expect(count).toBe(2);
     });
   });
 
   describe("update test", () => {
     it("channelのnameを変更", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hogehoge",
       });
-      await Channel.update(
+      await Group.update(
         { name: "hogehogehoge" },
         {
           where: {
-            channel_id: 1,
+            id: 1,
           },
         }
       );
-      const channels = await Channel.findAll();
-      expect(channels[0].name).toBe("hogehogehoge");
+      const groups = await Group.findAll();
+      expect(groups[0].name).toBe("hogehogehoge");
     });
     it("channelのnameを指定してアップデート（複数存在する状態で）", async () => {
-      await Channel.create({
+      await Group.create({
         name: "hoge",
       });
-      await Channel.create({
+      await Group.create({
         name: "fuga",
       });
-      await Channel.create({
+      await Group.create({
         name: "hoge",
       });
-      await Channel.update(
+      await Group.update(
         { name: "hogege" },
         {
           where: {
@@ -149,13 +149,13 @@ describe("database: channel table test", () => {
           },
         }
       );
-      const channels = await Channel.findAll({
+      const groups = await Group.findAll({
         where: {
           name: "hogege",
         },
       });
-      expect(channels[0].channel_id).toBe(1);
-      expect(channels[1].channel_id).toBe(3);
+      expect(groups[0].id).toBe(1);
+      expect(groups[1].id).toBe(3);
     });
   });
 });

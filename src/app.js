@@ -4,6 +4,7 @@ const app = express();
 const authRouter = require("./auth/controller");
 const makeChannelRouter = require("./makeChannel/controller");
 const channelsRouter = require("./channels/channels.controller");
+const groupRouter = require("./channels/groups/controller");
 
 app.set("view engine", "ejs");
 app.use(express.static("dist/public"));
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
   }
 });
 
+app.use("/channels/groups/:id", groupRouter);
 app.use("/channels", channelsRouter);
 app.get("/", (req, res) => {
   res.redirect("/login");

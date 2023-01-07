@@ -1,6 +1,6 @@
 const express = require("express");
 const authRouter = express.Router();
-const Employee = require("../db/model/employee");
+const { Employee } = require("../db/model");
 const all = require("../channels/all.model.js");
 const admin = require("../channels/admin.model.js");
 const mypage = require("../channels/mypage.model.js");
@@ -21,7 +21,7 @@ authRouter.post("/mypage", mypage.editMe);
 authRouter.post("/login", async (req, res) => {
   const employee = req.body;
   const result = await Employee.findOne({
-    where: { employee_id: employee.id },
+    where: { id: employee.id },
   });
   if (result === null) {
     req.session = null;

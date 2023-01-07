@@ -3,8 +3,6 @@ const group = require("./model");
 const groupRouter = express.Router({ mergeParams: true });
 
 groupRouter.get("/", group.displayGruopPage);
-groupRouter.post("/", group.addMessage, (req, res) => {
-  res.redirect(`/channels/${req.params.id}`);
-});
+groupRouter.post("/messages", group.addMessage);
 
 module.exports = groupRouter;

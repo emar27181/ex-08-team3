@@ -1,16 +1,14 @@
-const Channel = require("../db/model/channnel");
-const Employee = require("../db/model/employee");
-const Member = require("../db/model/member");
+const { Employee, GroupEmployees, Group } = require("../db/model");
 
 const makeChannelModel = {
   renderToChannel: async (req, res) => {
     const user = await Employee.findOne({
-      where: { employee_id: req.session.id },
+      where: { id: req.session.id },
     });
-    const channelsJoin = await Member.findAll({
-      where: { employee_id: req.session.id },
+    const channelsJoin = await GroupEmployees.findAll({
+      where: { EmployeeId: req.session.id },
     });
-    const channels = await Channel.findAll();
+    const channels = await Group.findAll();
     res.render("channel", {
       user,
       channelsJoin,
@@ -21,14 +19,14 @@ const makeChannelModel = {
   addChannel: async (req, res) => {
     const reqData = req.body;
 
-    const makedChannel = await Channel.create({
+    const makedChannel = await Group.create({
       name: reqData.channel,
     });
-    await Member.create({
-      channel_id: makedChannel.channel_id,
-      employee_id: req.session.id,
+    await GroupEmployees.create({
+      GroupId: makedChannel.id,
+      EmployeeId: req.session.id,
     });
-    res.redirect(`/channels/${makedChannel.name}`);
+    res.redirect(`/channels/groups/${makedChannel.id}`);
   },
 };
 

@@ -1,10 +1,6 @@
 const session = require("supertest-session");
 const app = require("../../src/app");
-const Channel = require("../../src/db/model/channnel");
-const Employee = require("../../src/db/model/employee");
-const Member = require("../../src/db/model/member");
-const Message = require("../../src/db/model/message");
-const Position = require("../../src/db/model/position");
+const { Position, Employee, AllMessage } = require("../../src/db/model");
 
 jest.setTimeout(20000);
 let testSession = null;
@@ -12,31 +8,26 @@ let authenticatedSession = null;
 
 describe("Test the login path", () => {
   beforeAll(async () => {
-    await Channel.sync({ force: true });
     await Employee.sync({ force: true });
-    await Member.sync({ force: true });
-    await Message.sync({ force: true });
     await Position.sync({ force: true });
+    await AllMessage.sync({ force: true });
     await Position.create({
-      position_id: 1,
+      id: 1,
       position: "社長",
     });
     await Position.create({
-      position_id: 2,
+      id: 2,
       position: "リーダー",
     });
     await Position.create({
-      position_id: 3,
+      id: 3,
       position: "平社員",
     });
     await Employee.create({
-      employee_id: "ee000000",
+      id: "ee000000",
       name: "takeyama",
       password: "password",
-      position_id: 1,
-    });
-    await Channel.create({
-      name: "all",
+      PositionId: 1,
     });
   });
 
@@ -64,11 +55,11 @@ describe("Test the login path", () => {
       .send({ content: "hogehoge" })
       .expect(302);
     expect(response.text).toBe("Found. Redirecting to /channels/all");
-    const messages = await Message.findAll({
+    const messages = await AllMessage.findAll({
       where: {
         content: "hogehoge",
       },
     });
-    expect(messages[0].message_id).toBe(1);
+    expect(messages[0].id).toBe(1);
   });
 });

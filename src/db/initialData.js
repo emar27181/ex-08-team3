@@ -1,160 +1,185 @@
-const Channel = require("./model/channnel");
-const Employee = require("./model/employee");
-const Member = require("./model/member");
-const Message = require("./model/message");
-const Position = require("./model/position");
+const {
+  Position,
+  Employee,
+  GroupEmployees,
+  Group,
+  AllMessage,
+  GroupMessage,
+  DirectMessage,
+} = require("./model");
 
 const createInitialData = async () => {
+  await Position.sync();
+  await Employee.sync();
+  await AllMessage.sync();
+  await Group.sync();
+  await GroupEmployees.sync();
+  await GroupMessage.sync();
+  await DirectMessage.sync();
   await createPositionData();
   await createEmployeeData();
-  await createChannel();
+  await createGroup();
   await createMessage();
 };
 
 const createPositionData = async () => {
   await Position.create({
-    position_id: 1,
+    id: 1,
     position: "社長",
   });
   await Position.create({
-    position_id: 2,
+    id: 2,
     position: "リーダー",
   });
   await Position.create({
-    position_id: 3,
+    id: 3,
     position: "平社員",
   });
 };
 
 const createEmployeeData = async () => {
   await Employee.create({
-    employee_id: "ee000000",
+    id: "ee000000",
     name: "takeyama",
     password: "password",
-    position_id: 1,
+    PositionId: 1,
   });
   await Employee.create({
-    employee_id: "ee111111",
+    id: "ee111111",
     name: "iguchi",
     password: "hogehoge",
-    position_id: 2,
+    PositionId: 2,
   });
   await Employee.create({
-    employee_id: "ee222222",
+    id: "ee222222",
     name: "reishi",
     password: "foobar",
-    position_id: 2,
+    PositionId: 2,
   });
   await Employee.create({
-    employee_id: "ee333333",
+    id: "ee333333",
     name: "fumito",
     password: "hogehogehoge",
-    position_id: 3,
+    PositionId: 3,
   });
   await Employee.create({
-    employee_id: "ee444444",
+    id: "ee444444",
     name: "takeuchi",
     password: "fugafuga",
-    position_id: 3,
+    PositionId: 3,
   });
   await Employee.create({
-    employee_id: "ee555555",
+    id: "ee555555",
     name: "akito",
     password: "fugafuga",
-    position_id: 3,
+    PositionId: 3,
   });
   await Employee.create({
-    employee_id: "ee666666",
+    id: "ee666666",
     name: "mochi",
     password: "barbaz",
-    position_id: 3,
+    PositionId: 3,
   });
 };
 
-const createChannel = async () => {
-  await Channel.create({
-    name: "all",
+const createGroup = async () => {
+  // group1の作成
+  const group1 = await Group.create({
+    name: "group1",
   });
-  const all = await Channel.findOne({
-    where: { name: "all" },
-  });
-
-  await Channel.create({
-    name: "me",
-  });
-  const me = await Channel.findOne({
-    where: { name: "me" },
+  // group2の作成
+  const group2 = await Group.create({
+    name: "group2",
   });
 
-  await Member.create({
-    employee_id: "ee000000",
-    channel_id: all.channel_id,
+  // group1に従業員を追加
+  await GroupEmployees.create({
+    GroupId: group1.id,
+    EmployeeId: "ee000000",
   });
-  await Member.create({
-    employee_id: "ee111111",
-    channel_id: all.channel_id,
+  await GroupEmployees.create({
+    GroupId: group1.id,
+    EmployeeId: "ee111111",
   });
-  await Member.create({
-    employee_id: "ee333333",
-    channel_id: all.channel_id,
+  await GroupEmployees.create({
+    GroupId: group1.id,
+    EmployeeId: "ee222222",
   });
-  await Member.create({
-    employee_id: "ee000000",
-    channel_id: me.channel_id,
+  // group2に従業員を追加
+  await GroupEmployees.create({
+    GroupId: group2.id,
+    EmployeeId: "ee333333",
   });
-  await Member.create({
-    employee_id: "ee111111",
-    channel_id: me.channel_id,
+  await GroupEmployees.create({
+    GroupId: group2.id,
+    EmployeeId: "ee444444",
   });
-  await Member.create({
-    employee_id: "ee333333",
-    channel_id: me.channel_id,
+  await GroupEmployees.create({
+    GroupId: group2.id,
+    EmployeeId: "ee555555",
   });
-
-  // await Channel.create({
-  //   name: "group",
-  // });
+  await GroupEmployees.create({
+    GroupId: group2.id,
+    EmployeeId: "ee666666",
+  });
 };
 
 const createMessage = async () => {
-  await Message.create({
-    content: "initial message(channel_id=1)",
-    time: new Date(),
-    employee_id: "ee000000",
-    channel_id: 1,
+  // 全体向けメッセージの追加
+  await AllMessage.create({
+    content: "initial message(all)",
+    EmployeeId: "ee000000",
   });
-  await Message.create({
-    content: "second message(channel_id=1)",
-    time: new Date(),
-    employee_id: "ee111111",
-    channel_id: 1,
+  await AllMessage.create({
+    content: "second message(all)",
+    EmployeeId: "ee111111",
   });
 
-  await Message.create({
-    content: "initial message(channel_id=2)",
-    time: new Date(),
-    employee_id: "ee000000",
-    channel_id: 2,
+  // group1のメッセージの追加
+  await GroupMessage.create({
+    content: "initial message(group1)",
+    EmployeeId: "ee000000",
+    GroupId: 1,
   });
-  await Message.create({
-    content: "second message(channel_id=2)",
-    time: new Date(),
-    employee_id: "ee111111",
-    channel_id: 2,
+  await GroupMessage.create({
+    content: "second message(group1)",
+    EmployeeId: "ee111111",
+    GroupId: 1,
   });
 
-  // await Message.create({
-  //   content: "initial message(channel_id=3)",
-  //   time: new Date(),
-  //   employee_id: "ee000000",
-  //   channel_id: 3,
-  // });
-  // await Message.create({
-  //   content: "second message(channel_id=3)",
-  //   time: new Date(),
-  //   employee_id: "ee111111",
-  //   channel_id: 3,
-  // });
+  // group2のメッセージの追加
+  await GroupMessage.create({
+    content: "initial message(group2)",
+    EmployeeId: "ee333333",
+    GroupId: 2,
+  });
+  await GroupMessage.create({
+    content: "second message(group2)",
+    EmployeeId: "ee444444",
+    GroupId: 2,
+  });
+
+  // DMの追加
+  await DirectMessage.create({
+    content: "initial message(ee000000-ee111111)",
+    EmployeeId: "ee000000",
+    receiver: "ee111111",
+  });
+  await DirectMessage.create({
+    content: "second message(ee000000-ee111111)",
+    EmployeeId: "ee111111",
+    receiver: "ee000000",
+  });
+  await DirectMessage.create({
+    content: "initial message(ee000000-ee222222)",
+    EmployeeId: "ee000000",
+    receiver: "ee222222",
+  });
+  await DirectMessage.create({
+    content: "second message(ee000000-ee222222)",
+    EmployeeId: "ee222222",
+    receiver: "ee000000",
+  });
 };
 
 module.exports = createInitialData;

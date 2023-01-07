@@ -21,9 +21,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <script defer src="../index.js"></script>
-    <script defer src="../messageCh.js"></script>
-    <link href="../all.css" rel="stylesheet" />
+    <script defer src="/index.js"></script>
+    <script defer src="/messageCh.js"></script>
+    <link href="/all.css" rel="stylesheet" />
 
     <title>グループ向けメッセージ</title>
   </head>
@@ -80,7 +80,7 @@
         <footer>
           <div class="container-fluid form-space">
             <form
-              action="/channels/<%= chname.name %>"
+              action="/channels/<%= chname.id %>"
               method="post"
               id="messagge-form"
             >

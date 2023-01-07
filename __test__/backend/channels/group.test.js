@@ -1,47 +1,46 @@
 const session = require("supertest-session");
 const app = require("../../../src/app");
-const Channel = require("../../../src/db/model/channnel");
-const Employee = require("../../../src/db/model/employee");
-const Member = require("../../../src/db/model/member");
-const Message = require("../../../src/db/model/message");
-const Position = require("../../../src/db/model/position");
+const {
+  Position,
+  Employee,
+  GroupEmployees,
+  Group,
+  GroupMessage,
+} = require("../../../src/db/model");
 
 jest.setTimeout(20000);
 let testSession = null;
 
 describe("Test the group path", () => {
   beforeAll(async () => {
-    await Channel.sync({ force: true });
+    await Group.sync({ force: true });
     await Employee.sync({ force: true });
-    await Member.sync({ force: true });
-    await Message.sync({ force: true });
+    await GroupEmployees.sync({ force: true });
+    await GroupMessage.sync({ force: true });
     await Position.sync({ force: true });
     await Position.create({
-      position_id: 1,
+      id: 1,
       position: "社長",
     });
     await Position.create({
-      position_id: 2,
+      id: 2,
       position: "リーダー",
     });
     await Position.create({
-      position_id: 3,
+      id: 3,
       position: "平社員",
     });
     await Employee.create({
-      employee_id: "ee000000",
+      id: "ee000000",
       name: "takeyama",
       password: "password",
-      position_id: 1,
+      PositionId: 1,
     });
-    await Channel.create({
-      name: "all",
+    await Group.create({
+      name: "group1",
     });
-    await Channel.create({
-      name: "me",
-    });
-    await Channel.create({
-      name: "group",
+    await Group.create({
+      name: "group2",
     });
     testSession = session(app);
     await testSession
@@ -53,21 +52,32 @@ describe("Test the group path", () => {
   describe("GET /channels/group", () => {
     it("response status", async () => {
       expect.assertions(1);
-      const res = await testSession.get("/channels/group");
+      const res = await testSession.get("/channels/groups/1");
       expect(res.status).toStrictEqual(200);
     });
 
     it("response type", async () => {
       expect.assertions(1);
-      const res = await testSession.get("/channels/group");
+      const res = await testSession.get("/channels/groups/1/messages");
       expect(res.type).toStrictEqual("text/html");
     });
   });
 
   describe("POST /channels/group", () => {
     it("response status", async () => {
-      expect.assertions(1);
-      const res = await testSession.post("/channels/group");
+      expect.assertions(2);
+      const res = await testSession
+        .post("/channels/groups/1/messages")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({ content: "hello" })
+        .expect(302);
+
+      const message = await GroupMessage.findAll({
+        where: {
+          content: "hello",
+        },
+      });
+      expect(message[0].content).toStrictEqual("hello");
       expect(res.status).toStrictEqual(302);
     });
   });
