@@ -71,9 +71,32 @@ const Group = sequelize.define("Group", {
   },
 });
 
+const GroupEmployees = sequelize.define("GroupEmployees", {
+  EmployeeId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Employee,
+      key: "id",
+    },
+  },
+  GroupId: {
+    type: DataTypes.STRING,
+    references: {
+      model: Group,
+      key: "id",
+    },
+  },
+});
+
+// GroupとEmployeeの関連付け
+// 多対多
+Group.belongsToMany(Employee, { through: GroupEmployees });
+Employee.belongsToMany(Group, { through: GroupEmployees });
+
 module.exports = {
   Position,
   Employee,
   AllMessage,
   Group,
+  GroupEmployees,
 };
