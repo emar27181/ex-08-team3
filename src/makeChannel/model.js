@@ -7,13 +7,13 @@ const makeChannelModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
-    const ch = await Member.findAll({
+    const channelsJoin = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
     res.render("channel", {
       user,
-      ch,
+      channelsJoin,
       channels,
     });
   },
@@ -21,17 +21,14 @@ const makeChannelModel = {
   addChannel: async (req, res) => {
     const reqData = req.body;
 
-    const chacha = await Channel.create({
+    const makedChannel = await Channel.create({
       name: reqData.channel,
     });
-    // const chacha = await Channel.findOne({
-    //   where: { name: reqData.channel },
-    // });
     await Member.create({
-      channel_id: chacha.channel_id,
+      channel_id: makedChannel.channel_id,
       employee_id: req.session.id,
     });
-    res.redirect(`/channels/${chacha.name}`);
+    res.redirect(`/channels/${makedChannel.name}`);
   },
 };
 

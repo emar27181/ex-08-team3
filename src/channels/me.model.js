@@ -1,9 +1,13 @@
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
+const Member = require("../db/model/member");
 
 const meModel = {
   displayDM: async (req, res) => {
     const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    const channelsJoin = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
@@ -21,6 +25,7 @@ const meModel = {
     }
     res.render("me", {
       user,
+      channelsJoin,
       channels,
       employees: formatedEmployees,
     });

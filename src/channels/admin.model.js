@@ -1,9 +1,13 @@
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
+const Member = require("../db/model/member");
 
 const adminModel = {
   displayInvolve: async (req, res) => {
     const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    const channelsJoin = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
@@ -20,6 +24,7 @@ const adminModel = {
     }
     res.render("involve", {
       user,
+      channelsJoin,
       channels,
       employees: formatedEmployees,
     });

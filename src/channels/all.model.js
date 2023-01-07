@@ -1,12 +1,16 @@
 const Channel = require("../db/model/channnel");
 const Employee = require("../db/model/employee");
 const Message = require("../db/model/message");
+const Member = require("../db/model/member");
 const formatDate = require("./formatDate");
 const matchMyId = require("./matchMyId");
 
 const allModel = {
   displayMessage: async (req, res) => {
     const user = await Employee.findOne({
+      where: { employee_id: req.session.id },
+    });
+    const channelsJoin = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     await Message.sync();
@@ -28,6 +32,7 @@ const allModel = {
     }
     res.render("all", {
       user,
+      channelsJoin,
       channels,
       messages: formatedMessages,
     });
@@ -48,6 +53,9 @@ const allModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
+    const channelsJoin = await Member.findAll({
+      where: { employee_id: req.session.id },
+    });
     await Message.sync();
     const channels = await Channel.findAll();
     const employees = await Employee.findAll();
@@ -63,6 +71,7 @@ const allModel = {
     }
     res.render("admin", {
       user,
+      channelsJoin,
       channels,
       employees: formatedEmployees,
     });
