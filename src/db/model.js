@@ -113,6 +113,27 @@ GroupMessage.belongsTo(Employee);
 Group.hasMany(GroupMessage);
 GroupMessage.belongsTo(Group);
 
+// DirectMessageのテーブルの定義
+const DirectMessage = sequelize.define("DirectMessage", {
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no content",
+  },
+  // メッセージの受信相手のidを保存
+  receiver: {
+    type: DataTypes.STRING,
+    validate: {
+      is: /[a-z][a-z][0-9]{6}/u,
+    },
+  },
+});
+
+// EmplyeeとDirectMessageの関連付け
+// 一対多
+Employee.hasMany(DirectMessage);
+DirectMessage.belongsTo(Employee);
+
 module.exports = {
   Position,
   Employee,
@@ -120,4 +141,5 @@ module.exports = {
   Group,
   GroupEmployees,
   GroupMessage,
+  DirectMessage,
 };
