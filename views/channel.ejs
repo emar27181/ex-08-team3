@@ -55,7 +55,8 @@
                 >
               </div>
             </li>
-            <% for (const channel of channels) { %>
+            <% for (const mem of channelsJoin) { %> <% for (const channel of channels) {
+              %> <% if ( mem.channel_id === channel.channel_id) {%>
             <li>
               <div class="row">
                 <a
@@ -69,7 +70,7 @@
                 </a>
               </div>
             </li>
-            <% } %>
+            <% } %> <% } %> <% } %>
           </ul>
         </div>
       </aside>
