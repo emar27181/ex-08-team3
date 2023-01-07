@@ -48,6 +48,7 @@ Position.hasMany(Employee, {
 });
 Employee.belongsTo(Position);
 
+// 全体向けメッセージのテーブルを定義
 const AllMessage = sequelize.define("AllMessage", {
   content: {
     type: DataTypes.TEXT,
@@ -61,8 +62,18 @@ const AllMessage = sequelize.define("AllMessage", {
 Employee.hasMany(AllMessage);
 AllMessage.belongsTo(Employee);
 
+// グループのテーブルを定義
+const Group = sequelize.define("Group", {
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no name",
+  },
+});
+
 module.exports = {
   Position,
   Employee,
   AllMessage,
+  Group,
 };
