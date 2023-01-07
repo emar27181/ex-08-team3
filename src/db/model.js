@@ -71,6 +71,7 @@ const Group = sequelize.define("Group", {
   },
 });
 
+// GroupとEmployeeの中間テーブル
 const GroupEmployees = sequelize.define("GroupEmployees", {
   EmployeeId: {
     type: DataTypes.INTEGER,
@@ -93,10 +94,30 @@ const GroupEmployees = sequelize.define("GroupEmployees", {
 Group.belongsToMany(Employee, { through: GroupEmployees });
 Employee.belongsToMany(Group, { through: GroupEmployees });
 
+// Groupのメッセージテーブルを定義
+const GroupMessage = sequelize.define("GroupMessage", {
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "no content",
+  },
+});
+
+// EmployeeとGroupMessageの関連付け
+// 一対多
+Employee.hasMany(GroupMessage);
+GroupMessage.belongsTo(Employee);
+
+// GroupとGroupMessageの関連付け
+// 一対多
+Group.hasMany(GroupMessage);
+GroupMessage.belongsTo(Group);
+
 module.exports = {
   Position,
   Employee,
   AllMessage,
   Group,
   GroupEmployees,
+  GroupMessage,
 };
