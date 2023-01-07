@@ -10,7 +10,7 @@ const groupModel = {
     const user = await Employee.findOne({
       where: { employee_id: req.session.id },
     });
-    const ch = await Member.findAll({
+    const channelsJoin = await Member.findAll({
       where: { employee_id: req.session.id },
     });
     const channels = await Channel.findAll();
@@ -34,7 +34,7 @@ const groupModel = {
     }
     res.render("group", {
       user,
-      ch,
+      channelsJoin,
       channels,
       chname,
       messages: formatedMessages,
