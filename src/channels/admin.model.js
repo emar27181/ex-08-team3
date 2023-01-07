@@ -24,7 +24,7 @@ const adminModel = {
     }
     res.render("involve", {
       user,
-      ch,
+      channelsJoin,
       channels,
       employees: formatedEmployees,
     });
