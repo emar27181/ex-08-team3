@@ -109,7 +109,7 @@ const createGroup = async () => {
   await GroupEmployees.create({
     GroupId: group2.id,
     EmployeeId: "ee333333",
-  });;
+  });
   await GroupEmployees.create({
     GroupId: group2.id,
     EmployeeId: "ee444444",
@@ -156,7 +156,7 @@ const createMessage = async () => {
   await GroupMessage.create({
     content: "second message(group2)",
     EmployeeId: "ee444444",
-    GroupId: 1,
+    GroupId: 2,
   });
 
   // DMの追加
