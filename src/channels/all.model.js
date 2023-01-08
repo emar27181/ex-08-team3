@@ -12,7 +12,9 @@ const allModel = {
     });
     await AllMessage.sync();
     const channels = await Group.findAll();
-    const messages = await AllMessage.findAll();
+    const messages = await AllMessage.findAll({
+      include: [Employee],
+    });
     const formatedMessages = [];
     for (const message of messages) {
       const formatedMessage = {
