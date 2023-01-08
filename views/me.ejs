@@ -25,7 +25,7 @@
     <link href="../all.css" rel="stylesheet" />
     <link href="../me.css" rel="stylesheet" />
 
-    <title>個人向けメッセージ</title>
+    <title>ダイレクトメッセージ</title>
   </head>
   <body>
     <header>
@@ -37,7 +37,7 @@
           <div class="col-auto" id="username">name: <%= user.name %></div>
           <div class="col-auto" id="userid">ID: <%= user.id %></div>
           <div class="col-auto" id="this-channel">
-            channel: 個人向けメッセージ
+            channel: ダイレクトメッセージ
           </div>
         </div>
         <a href="/mypage" id="mypage" class="btn btn-light"> MyPage </a>
@@ -95,29 +95,8 @@
       </aside>
 
       <div id="right-sidebar">
-        <footer>
-          <div class="container-fluid form-space">
-            <form action="/channels/me" method="post" id="messagge-form">
-              <label for="message_content" class="message-content"
-                >社員検索</label
-              >
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="content"
-                  id="message_content"
-                  class="form-control"
-                  placeholder="ee000000 or name"
-                  required
-                />
-                <button class="btn btn-secondary">検索</button>
-              </div>
-            </form>
-          </div>
-        </footer>
-
         <div id="content-body">
-          <h1>個人向けメッセージ</h1>
+          <h1>ダイレクトメッセージ</h1>
           <div class="container-fluid">
             <ul id="employee-list">
               <% for (const employee of employees) { %>
