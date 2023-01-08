@@ -33,7 +33,7 @@ const groupModel = {
         message_id: message.id,
         channel_id: message.GroupId,
         employee_id: message.Employee.name,
-        who: matchMyId(message.id, req.session.id),
+        who: matchMyId(message.EmployeeId, req.session.id),
       };
       formatedMessages.push(formatedMessage);
     }
