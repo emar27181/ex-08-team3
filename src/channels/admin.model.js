@@ -1,32 +1,23 @@
-const Channel = require("../db/model/channnel");
-const Employee = require("../db/model/employee");
-const Member = require("../db/model/member");
+const { Employee, GroupEmployees, Group } = require("../db/model");
 
 const adminModel = {
   displayInvolve: async (req, res) => {
     const user = await Employee.findOne({
-      where: { employee_id: req.session.id },
+      where: { id: req.session.id },
     });
-    const channelsJoin = await Member.findAll({
-      where: { employee_id: req.session.id },
+    const JoinChannels = await GroupEmployees.findAll({
+      where: { EmployeeId: req.session.id },
     });
-    const channels = await Channel.findAll();
-    const employees = await Employee.findAll();
-    const formatedEmployees = [];
-    for (const employee of employees) {
-      const formatedEmployee = {
-        employee_id: employee.employee_id,
-        name: employee.name,
-        password: employee.passwoed,
-        position_id: employee.position_id,
-      };
-      formatedEmployees.push(formatedEmployee);
+    const joinChannelsId = [];
+    for (const JoinChannel of JoinChannels) {
+      joinChannelsId.push(JoinChannel.GroupId);
     }
+    const channels = await Group.findAll({
+      where: { id: joinChannelsId },
+    });
     res.render("involve", {
       user,
-      channelsJoin,
       channels,
-      employees: formatedEmployees,
     });
   },
 
@@ -36,16 +27,16 @@ const adminModel = {
     let flag = true;
 
     for (const employee of employees) {
-      if (reqData.employee_id === employee.employee_id) {
+      if (reqData.employee_id === employee.id) {
         flag = false;
       }
     }
     if (flag) {
       await Employee.create({
-        employee_id: reqData.employee_id,
+        id: reqData.employee_id,
         name: reqData.name,
         password: reqData.password,
-        position_id: reqData.position_id,
+        PositionId: reqData.position_id,
       });
       res.redirect("/admin");
     } else {
@@ -62,21 +53,21 @@ const adminModel = {
       btnkey = `${key}`;
       change = `${value}`;
     }
-    if (btnkey === "p_change") {
-      const user = await Employee.findOne({
-        where: { employee_id: change },
-      });
-      if (user.position_id === 3) {
-        user.position_id = 2;
-      } else if (user.position_id === 2) {
-        user.position_id = 3;
+    const employee = await Employee.findOne({
+      where: { id: change },
+    });
+
+    if (employee.PositionId !== 1) {
+      if (btnkey === "p_change") {
+        if (employee.PositionId === 3) {
+          employee.PositionId = 2;
+        } else if (employee.PositionId === 2) {
+          employee.PositionId = 3;
+        }
+        employee.save();
+      } else if (btnkey === "m_delete") {
+        employee.destroy();
       }
-      user.save();
-    } else if (btnkey === "m_delete") {
-      const user = await Employee.findOne({
-        where: { employee_id: change },
-      });
-      user.destroy();
     }
     res.redirect("/admin");
   },

@@ -13,10 +13,16 @@ const groupModel = {
     const user = await Employee.findOne({
       where: { id: req.session.id },
     });
-    const channelsJoin = await GroupEmployees.findAll({
+    const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
     });
-    const channels = await Group.findAll();
+    const joinChannelsId = [];
+    for (const JoinChannel of JoinChannels) {
+      joinChannelsId.push(JoinChannel.GroupId);
+    }
+    const channels = await Group.findAll({
+      where: { id: joinChannelsId },
+    });
     // params.idからグループを取得
     const group = await Group.findOne({
       where: { id: req.params.id },
@@ -33,13 +39,12 @@ const groupModel = {
         message_id: message.id,
         channel_id: message.GroupId,
         employee_id: message.Employee.name,
-        who: matchMyId(message.id, req.session.id),
+        who: matchMyId(message.EmployeeId, req.session.id),
       };
       formatedMessages.push(formatedMessage);
     }
     res.render("group", {
       user,
-      channelsJoin,
       channels,
       chname: group,
       messages: formatedMessages,
@@ -60,7 +65,7 @@ const groupModel = {
       });
     }
 
-    res.redirect(`/channels/${req.params.id}`);
+    res.redirect(`/channels/groups/${req.params.id}`);
   },
 };
 

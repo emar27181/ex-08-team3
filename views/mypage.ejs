@@ -42,7 +42,7 @@
         </button>
         <div class="myrow" id="page-info">
           <div class="col-auto" id="username">name: <%= user.name %></div>
-          <div class="col-auto" id="userid">ID: <%= user.employee_id %></div>
+          <div class="col-auto" id="userid">ID: <%= user.id %></div>
         </div>
         <a href="/channels/all" id="back-to-home" class="btn btn-light">
           HOME
@@ -61,12 +61,31 @@
                 >
               </div>
             </li>
-            <% for (const mem of channelsJoin) { %> <% for (const channel of
-            channels) { %> <% if ( mem.channel_id === channel.channel_id) {%>
             <li>
               <div class="row">
                 <a
-                  href="/channels/<%= channel.name %>"
+                  href="/channels/all"
+                  class="channel btn"
+                  title="全体向けメッセージ"
+                  >全体</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/me"
+                  class="channel btn"
+                  title="ダイレクトメッセージ"
+                  >DM</a
+                >
+              </div>
+            </li>
+            <% for (const channel of channels) { %>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/groups/<%= channel.id %>"
                   class="channel btn"
                   data-bs-toggle="tooltip"
                   data-bs-plaecment="right"
@@ -76,7 +95,7 @@
                 </a>
               </div>
             </li>
-            <% } %> <% } %> <% } %>
+            <% } %>
           </ul>
         </div>
       </aside>
@@ -87,7 +106,7 @@
           <div class="container-fuild" id="user-info">
             <div>
               <label for="employee-name">Name</label>
-              <form action="/mypage" method="post" id="name-form">
+              <form action="/mypage/edit/name" method="post" id="name-form">
                 <div class="input-group">
                   <input
                     type="text"
@@ -104,11 +123,15 @@
             </div>
             <div>
               <label for="employee-id">ID</label>
-              <div id="employee-id"><%= user.employee_id %></div>
+              <div id="employee-id"><%= user.id %></div>
             </div>
             <div>
               <label for="employee-password">Password</label>
-              <form action="/mypage" method="post" id="password-form">
+              <form
+                action="/mypage/edit/password"
+                method="post"
+                id="password-form"
+              >
                 <div class="input-group">
                   <input
                     type="password"
@@ -129,9 +152,9 @@
             <div>
               <label for="employee-position">Position</label>
               <div id="employee-position">
-                <% if(user.position_id === 1) { %> マネージャー <% } else if
-                (user.position_id === 2) { %> リーダー <% } else if
-                (user.position_id === 3) { %> 社員 <% } %>
+                <% if(user.PositionId === 1) { %> マネージャー <% } else if
+                (user.PositionId === 2) { %> リーダー <% } else if
+                (user.PositionId === 3) { %> 社員 <% } %>
               </div>
             </div>
           </div>

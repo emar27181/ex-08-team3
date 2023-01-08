@@ -5,13 +5,18 @@ const makeChannelModel = {
     const user = await Employee.findOne({
       where: { id: req.session.id },
     });
-    const channelsJoin = await GroupEmployees.findAll({
+    const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
     });
-    const channels = await Group.findAll();
+    const joinChannelsId = [];
+    for (const JoinChannel of JoinChannels) {
+      joinChannelsId.push(JoinChannel.GroupId);
+    }
+    const channels = await Group.findAll({
+      where: { id: joinChannelsId },
+    });
     res.render("channel", {
       user,
-      channelsJoin,
       channels,
     });
   },
