@@ -106,7 +106,7 @@
           <div class="container-fuild" id="user-info">
             <div>
               <label for="employee-name">Name</label>
-              <form action="/mypage" method="post" id="name-form">
+              <form action="/mypage/edit/name" method="post" id="name-form">
                 <div class="input-group">
                   <input
                     type="text"
@@ -123,11 +123,15 @@
             </div>
             <div>
               <label for="employee-id">ID</label>
-              <div id="employee-id"><%= user.employee_id %></div>
+              <div id="employee-id"><%= user.id %></div>
             </div>
             <div>
               <label for="employee-password">Password</label>
-              <form action="/mypage" method="post" id="password-form">
+              <form
+                action="/mypage/edit/password"
+                method="post"
+                id="password-form"
+              >
                 <div class="input-group">
                   <input
                     type="password"
