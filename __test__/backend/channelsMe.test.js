@@ -33,7 +33,7 @@ describe("Test the login path", () => {
       id: "ee111111",
       name: "iguchi",
       password: "password",
-      PositionId: 1,
+      PositionId: 2,
     });
   });
 
@@ -54,5 +54,31 @@ describe("Test the login path", () => {
       .then((response) => {
         expect(response.statusCode).toBe(200);
       });
+  });
+
+  it("wrong request", async () => {
+    expect.assertions(1);
+    await authenticatedSession
+      .get("/channels/me/employees/bb111111")
+      .then((response) => {
+        expect(response.statusCode).toBe(400);
+      });
+  });
+
+  it("post message to direct message", async () => {
+    const response = await authenticatedSession
+      .post("/channels/me/employees/ee111111/messages")
+      .set("Content-Type", "application/x-www-form-urlencoded")
+      .send({ content: "hogehoge" })
+      .expect(302);
+    expect(response.text).toBe(
+      "Found. Redirecting to /channels/me/employees/ee111111"
+    );
+    const messages = await DirectMessage.findAll({
+      where: {
+        content: "hogehoge",
+      },
+    });
+    expect(messages[0].id).toBe(1);
   });
 });
