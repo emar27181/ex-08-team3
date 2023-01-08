@@ -53,22 +53,21 @@ const adminModel = {
       btnkey = `${key}`;
       change = `${value}`;
     }
-    if (btnkey === "p_change") {
-      const employee = await Employee.findOne({
-        where: { id: change },
-      });
+    const employee = await Employee.findOne({
+      where: { id: change },
+    });
 
-      if (employee.PositionId === 3) {
-        employee.PositionId = 2;
-      } else if (employee.PositionId === 2) {
-        employee.PositionId = 3;
+    if (employee.PositionId !== 1) {
+      if (btnkey === "p_change") {
+        if (employee.PositionId === 3) {
+          employee.PositionId = 2;
+        } else if (employee.PositionId === 2) {
+          employee.PositionId = 3;
+        }
+        employee.save();
+      } else if (btnkey === "m_delete") {
+        employee.destroy();
       }
-      employee.save();
-    } else if (btnkey === "m_delete") {
-      const employee = await Employee.findOne({
-        where: { id: change },
-      });
-      employee.destroy();
     }
     res.redirect("/admin");
   },
