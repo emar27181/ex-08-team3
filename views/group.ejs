@@ -37,7 +37,7 @@
           <div class="col-auto" id="username">name: <%= user.name %></div>
           <div class="col-auto" id="userid">ID: <%= user.id %></div>
           <div class="col-auto" id="this-channel">
-            channel: グループ向けメッセージ
+            channel: <%= chname.name %>
           </div>
         </div>
         <a href="/group_admin" id="mem-edit" class="btn btn-light"> member </a>
@@ -123,7 +123,7 @@
         </footer>
 
         <div id="content-body">
-          <h1>グループ向けメッセージ</h1>
+          <h1><%= chname.name %></h1>
           <div class="container-fluid">
             <ul id="message-list">
               <% for (const message of messages) { %>
