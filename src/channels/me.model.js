@@ -1,4 +1,5 @@
 const { Employee, GroupEmployees, Group } = require("../db/model");
+const { Op } = require("sequelize");
 
 const meModel = {
   displayDM: async (req, res) => {
@@ -18,6 +19,11 @@ const meModel = {
     await Employee.sync();
     const employees = await Employee.findAll({
       attributes: ["id", "name", "PositionId"],
+      where: {
+        id: {
+          [Op.ne]: user.id,
+        },
+      },
     });
     res.render("me", {
       user,
