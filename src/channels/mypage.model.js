@@ -1,9 +1,9 @@
-const { Employee, GroupEmployees, Group } = require("../db/model");
+const { Employee, GroupEmployees, Group, Position } = require("../db/model");
 
 const mypageModel = {
   displayMypage: async (req, res) => {
     const user = await Employee.findOne({
-      where: { employee_id: req.session.id },
+      where: { id: req.session.id },
     });
     const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
@@ -15,14 +15,16 @@ const mypageModel = {
     const channels = await Group.findAll({
       where: { id: joinChannelsId },
     });
-    const employees = await Employee.findAll();
+    const employees = await Employee.findAll({
+      include: Position,
+    });
     const formatedEmployees = [];
     for (const employee of employees) {
       const formatedEmployee = {
-        employee_id: employee.employee_id,
+        employee_id: employee.id,
         name: employee.name,
         password: employee.passwoed,
-        position_id: employee.position_id,
+        position_id: employee.PositionId,
       };
       formatedEmployees.push(formatedEmployee);
     }
