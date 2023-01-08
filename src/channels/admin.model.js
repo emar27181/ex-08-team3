@@ -54,20 +54,21 @@ const adminModel = {
       change = `${value}`;
     }
     if (btnkey === "p_change") {
-      const user = await Employee.findOne({
-        where: { employee_id: change },
+      const employee = await Employee.findOne({
+        where: { id: change },
       });
-      if (user.position_id === 3) {
-        user.position_id = 2;
-      } else if (user.position_id === 2) {
-        user.position_id = 3;
+
+      if (employee.PositionId === 3) {
+        employee.PositionId = 2;
+      } else if (employee.PositionId === 2) {
+        employee.PositionId = 3;
       }
-      user.save();
+      employee.save();
     } else if (btnkey === "m_delete") {
-      const user = await Employee.findOne({
-        where: { employee_id: change },
+      const employee = await Employee.findOne({
+        where: { id: change },
       });
-      user.destroy();
+      employee.destroy();
     }
     res.redirect("/admin");
   },
