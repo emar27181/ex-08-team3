@@ -101,17 +101,17 @@
             <ul id="employee-list">
               <% for (const employee of employees) { %>
               <li>
-                <div class="row">
+                <div class="row myrow">
                   <div class="col-auto employee_id"><%= employee.id %></div>
                   <div class="col-auto name"><%= employee.name %></div>
-                  <a
-                    href="/channels/me/employees/<%= employee.id %>"
-                    id="mem-edit"
-                    class="btn btn-light"
-                  >
-                    メッセージ
-                  </a>
                 </div>
+                <a
+                  href="/channels/me/employees/<%= employee.id %>"
+                  class="btn btn-light"
+                  id="dm-btn"
+                >
+                  メッセージ
+                </a>
               </li>
               <% } %>
             </ul>
