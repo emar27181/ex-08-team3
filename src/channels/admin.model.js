@@ -3,7 +3,7 @@ const { Employee, GroupEmployees, Group } = require("../db/model");
 const adminModel = {
   displayInvolve: async (req, res) => {
     const user = await Employee.findOne({
-      where: { employee_id: req.session.id },
+      where: { id: req.session.id },
     });
     const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
@@ -15,21 +15,9 @@ const adminModel = {
     const channels = await Group.findAll({
       where: { id: joinChannelsId },
     });
-    const employees = await Employee.findAll();
-    const formatedEmployees = [];
-    for (const employee of employees) {
-      const formatedEmployee = {
-        employee_id: employee.employee_id,
-        name: employee.name,
-        password: employee.passwoed,
-        position_id: employee.position_id,
-      };
-      formatedEmployees.push(formatedEmployee);
-    }
     res.render("involve", {
       user,
       channels,
-      employees: formatedEmployees,
     });
   },
 
