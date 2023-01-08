@@ -69,6 +69,23 @@ const groupModel = {
       messages: formatedMessages,
     });
   },
+
+  add: async (req, res) => {
+    const reqData = req.body;
+    const employee = await Employee.findOne({
+      where: { id: req.params.id },
+    });
+
+    if (employee === null) {
+      res.status(400).send("bad request").end();
+    }
+    await DirectMessage.create({
+      content: reqData.content,
+      receiver: employee.id,
+      EmployeeId: req.session.id,
+    });
+    res.redirect(`/channels/me/employees/${req.params.id}`);
+  },
 };
 
 module.exports = groupModel;
