@@ -27,16 +27,16 @@ const adminModel = {
     let flag = true;
 
     for (const employee of employees) {
-      if (reqData.employee_id === employee.employee_id) {
+      if (reqData.employee_id === employee.id) {
         flag = false;
       }
     }
     if (flag) {
       await Employee.create({
-        employee_id: reqData.employee_id,
+        id: reqData.employee_id,
         name: reqData.name,
         password: reqData.password,
-        position_id: reqData.position_id,
+        PositionId: reqData.position_id,
       });
       res.redirect("/admin");
     } else {
