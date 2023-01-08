@@ -60,7 +60,7 @@ const groupModel = {
       });
     }
 
-    res.redirect(`/channels/${req.params.id}`);
+    res.redirect(`/channels/groups/${req.params.id}`);
   },
 };
 
