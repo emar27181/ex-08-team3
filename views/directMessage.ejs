@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer src="/index.js"></script>
+    <script defer src="/messageCh.js"></script>
+    <link href="/all.css" rel="stylesheet" />
+
+    <title>ダイレクトメッセージ</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="myrow" id="header-content">
+        <button class="btn btn-dark" id="sidebar-disp">
+          <span>-</span><span>-</span><span>-</span>
+        </button>
+        <div class="myrow" id="page-info">
+          <div class="col-auto" id="username">name: <%= user.name %></div>
+          <div class="col-auto" id="userid">ID: <%= user.id %></div>
+          <div class="col-auto" id="this-channel">
+            channel: ダイレクトメッセージ
+          </div>
+        </div>
+        <a href="/mypage" id="mypage" class="btn btn-light"> MyPage </a>
+      </div>
+    </header>
+
+    <div id="below-header">
+      <aside class="close">
+        <div class="container-fluid">
+          <ul>
+            <li>
+              <div class="row">
+                <a href="/channel" class="channel btn" title="チャンネル作成"
+                  >+</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/all"
+                  class="channel btn"
+                  title="全体向けメッセージ"
+                  >全体</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/me"
+                  class="channel btn"
+                  title="ダイレクトメッセージ"
+                  >DM</a
+                >
+              </div>
+            </li>
+            <% for (const channel of channels) { %>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/groups/<%= channel.id %>"
+                  class="channel btn"
+                  data-bs-toggle="tooltip"
+                  data-bs-plaecment="right"
+                  title="<%= channel.name %>"
+                >
+                  <div class="ch-name"><%= channel.name %></div>
+                </a>
+              </div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </aside>
+
+      <div id="right-sidebar">
+        <footer>
+          <div class="container-fluid form-space">
+            <form
+              action="/channels/me/<%= receiver.id %>/messages"
+              method="post"
+              id="messagge-form"
+            >
+              <label for="message_content" class="message-content"
+                >メッセージ</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  name="content"
+                  id="message_content"
+                  class="form-control"
+                  placeholder="ここにメッセージを入力"
+                  required
+                />
+                <button class="btn btn-secondary">送信</button>
+              </div>
+            </form>
+          </div>
+        </footer>
+
+        <div id="content-body">
+          <h1><%= receiver.name %></h1>
+          <div class="container-fluid">
+            <ul id="message-list">
+              <% for (const message of messages) { %>
+              <div class="myrow">
+                <div class="icon <%= message.who %>"></div>
+                <li>
+                  <div class="row">
+                    <div class="col-auto employee_id">
+                      <%= message.employee_id %>
+                    </div>
+                    <div class="col-auto time"><%= message.time %></div>
+                  </div>
+                  <div class="content"><%= message.content %></div>
+                </li>
+              </div>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
