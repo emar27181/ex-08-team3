@@ -58,6 +58,26 @@
                 >
               </div>
             </li>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/all"
+                  class="channel btn"
+                  title="全体向けメッセージ"
+                  >全体</a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="row">
+                <a
+                  href="/channels/me"
+                  class="channel btn"
+                  title="ダイレクトメッセージ"
+                  >DM</a
+                >
+              </div>
+            </li>
             <% for (const mem of channelsJoin) { %> <% for (const channel of
             channels) { %> <% if ( mem.channel_id === channel.channel_id) {%>
             <li>
