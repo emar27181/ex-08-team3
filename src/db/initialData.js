@@ -93,35 +93,49 @@ const createGroup = async () => {
   });
 
   // group1に従業員を追加
-  await GroupEmployees.create({
-    GroupId: group1.id,
-    EmployeeId: "ee000000",
+  const employee0 = await Employee.findOne({
+    where: {
+      id: "ee000000",
+    },
   });
-  await GroupEmployees.create({
-    GroupId: group1.id,
-    EmployeeId: "ee111111",
+  await employee0.addGroup(group1, { through: { selfGranted: false } });
+  const employee1 = await Employee.findOne({
+    where: {
+      id: "ee111111",
+    },
   });
-  await GroupEmployees.create({
-    GroupId: group1.id,
-    EmployeeId: "ee222222",
+  await employee1.addGroup(group1, { through: { selfGranted: false } });
+  const employee2 = await Employee.findOne({
+    where: {
+      id: "ee222222",
+    },
   });
+  await employee2.addGroup(group1, { through: { selfGranted: false } });
   // group2に従業員を追加
-  await GroupEmployees.create({
-    GroupId: group2.id,
-    EmployeeId: "ee333333",
+  const employee3 = await Employee.findOne({
+    where: {
+      id: "ee333333",
+    },
   });
-  await GroupEmployees.create({
-    GroupId: group2.id,
-    EmployeeId: "ee444444",
+  await employee3.addGroup(group2, { through: { selfGranted: false } });
+  const employee4 = await Employee.findOne({
+    where: {
+      id: "ee444444",
+    },
   });
-  await GroupEmployees.create({
-    GroupId: group2.id,
-    EmployeeId: "ee555555",
+  await employee4.addGroup(group2, { through: { selfGranted: false } });
+  const employee5 = await Employee.findOne({
+    where: {
+      id: "ee555555",
+    },
   });
-  await GroupEmployees.create({
-    GroupId: group2.id,
-    EmployeeId: "ee666666",
+  await employee5.addGroup(group2, { through: { selfGranted: false } });
+  const employee6 = await Employee.findOne({
+    where: {
+      id: "ee666666",
+    },
   });
+  await employee6.addGroup(group2, { through: { selfGranted: false } });
 };
 
 const createMessage = async () => {
