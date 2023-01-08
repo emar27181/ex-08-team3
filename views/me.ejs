@@ -104,9 +104,7 @@
               <% for (const employee of employees) { %>
               <li>
                 <div class="row">
-                  <div class="col-auto employee_id">
-                    <%= employee.employee_id %>
-                  </div>
+                  <div class="col-auto employee_id"><%= employee.id %></div>
                   <div class="col-auto name"><%= employee.name %></div>
                 </div>
               </li>
