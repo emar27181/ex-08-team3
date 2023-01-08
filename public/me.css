@@ -2,6 +2,7 @@ ul#employee-list > li {
   margin-bottom: 10px;
   background-color: rgb(244 244 244);
   border-radius: 5px;
+  display: flex;
   transition-duration: 0.5s;
 }
 
@@ -13,4 +14,10 @@ ul#employee-list > li:hover {
 ul#employee-list > li > .row {
   width: max-content;
   margin-left: 10px;
+}
+
+ul#employee-list > li > #dm-btn {
+  float: right;
+  margin: 5px;
+  margin-left: auto;
 }
