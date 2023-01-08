@@ -7,11 +7,17 @@ const allModel = {
     const user = await Employee.findOne({
       where: { id: req.session.id },
     });
-    const channelsJoin = await GroupEmployees.findAll({
+    const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
     });
+    const joinChannelsId = [];
+    for (const JoinChannel of JoinChannels) {
+      joinChannelsId.push(JoinChannel.GroupId);
+    }
     await AllMessage.sync();
-    const channels = await Group.findAll();
+    const channels = await Group.findAll({
+      where: { id: joinChannelsId },
+    });
     const messages = await AllMessage.findAll({
       include: [Employee],
     });
@@ -29,7 +35,6 @@ const allModel = {
     }
     res.render("all", {
       user,
-      channelsJoin,
       channels,
       messages: formatedMessages,
     });
