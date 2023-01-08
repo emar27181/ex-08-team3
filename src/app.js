@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 
 app.use("/channels/groups/:id", groupRouter);
 app.use("/channels", channelsRouter);
-app.use("/channels/me/employees/:id", meRouter);
+app.use("/channels/me", meRouter);
 app.get("/", (req, res) => {
   res.redirect("/login");
 });
