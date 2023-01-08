@@ -72,22 +72,7 @@ const Group = sequelize.define("Group", {
 });
 
 // GroupとEmployeeの中間テーブル
-const GroupEmployees = sequelize.define("GroupEmployees", {
-  EmployeeId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Employee,
-      key: "id",
-    },
-  },
-  GroupId: {
-    type: DataTypes.STRING,
-    references: {
-      model: Group,
-      key: "id",
-    },
-  },
-});
+const GroupEmployees = sequelize.define("GroupEmployees", {});
 
 // GroupとEmployeeの関連付け
 // 多対多
