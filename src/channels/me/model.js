@@ -20,6 +20,7 @@ const groupModel = {
     if (receiver === null) {
       // receiverのidがなかったとき
       res.status(400).send("bad request").end();
+      return;
     }
     const JoinChannels = await GroupEmployees.findAll({
       where: { EmployeeId: req.session.id },
@@ -78,6 +79,7 @@ const groupModel = {
 
     if (employee === null) {
       res.status(400).send("bad request").end();
+      return;
     }
     await DirectMessage.create({
       content: reqData.content,
