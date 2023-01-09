@@ -1,6 +1,6 @@
 const channelsModel = {
-  redirectToAll: (req, res) => {
-    res.redirect("/channels/all");
+  redirectToAllMessages: (req, res) => {
+    res.redirect("/channels/all/messages");
   },
 };
 
