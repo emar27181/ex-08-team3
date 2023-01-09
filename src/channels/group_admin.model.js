@@ -63,6 +63,7 @@ const gadminModel = {
     });
     const member = await GroupEmployees.findOne({
       where: {
+        // req.params.id使えなくて、現状employee_idだけで削除対象を決めてる
         // GroupId: req.params.id,
         EmployeeId: memid,
       },
@@ -71,6 +72,7 @@ const gadminModel = {
     if (employee.PositionId !== 1) {
       if (btnkey === "g_add") {
         await GroupEmployees.create({
+          // ここの書き方わからない
           GroupId: 1,
           EmployeeId: memid,
         });
@@ -78,6 +80,7 @@ const gadminModel = {
         member.destroy();
       }
     }
+    // リダイレクトできてない
     // res.redirect("/channels/groups/<% req.params.id %>/members");
     // res.redirect(`/channels/groups/${req.params.id}`);
   },
