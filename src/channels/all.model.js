@@ -47,7 +47,7 @@ const allModel = {
       content: reqData.content,
       EmployeeId: req.session.id,
     });
-    res.redirect("/channels/all");
+    res.redirect("/channels/all/messages");
   },
 
   displayAdmin: async (req, res) => {
