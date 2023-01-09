@@ -65,7 +65,9 @@ const allModel = {
     const channels = await Group.findAll({
       where: { id: joinChannelsId },
     });
-    const employees = await Employee.findAll();
+    const employees = await Employee.findAll({
+      order: [["id", "asc"]],
+    });
     const formatedEmployees = [];
     for (const employee of employees) {
       const formatedEmployee = {
