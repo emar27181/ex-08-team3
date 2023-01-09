@@ -5,6 +5,7 @@ const groupRouter = express.Router({ mergeParams: true });
 
 groupRouter.get("/members", admin.displayGAdmin);
 groupRouter.get("/", group.redirectToGroupMessages);
+groupRouter.get("/messages", group.displayGruopPage);
 groupRouter.post("/messages", group.addMessage);
 
 module.exports = groupRouter;
