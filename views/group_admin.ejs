@@ -96,16 +96,41 @@
 
       <div id="right-sidebar">
         <div id="content-body">
-          <h1>管理用ページ</h1>
+          <h1>グループページ</h1>
           <div class="container-fluid">
+            <h2>メンバー</h2>
+            <ul id="member-list">
+              <% for (const employee of employees) { %> <% for (const member of
+              members) { %> <% if(employee.employee_id === member.employee_id) {
+              %>
+              <div class="myrow">
+                <li>
+                  <div class="row">
+                    <div class="col-auto employee_id">
+                      <%= employee.employee_id %>
+                    </div>
+                    <div class="col-auto employee-position">
+                      <% if (employee.position_id === 1) { %> マネージャー <% }
+                      else if (employee.position_id === 2) { %> リーダー <%
+                      }else if (employee.position_id === 3) { %> 社員 <% } %>
+                    </div>
+                    <div class="col-auto name"><%= employee.name %></div>
+                  </div>
+                </li>
+              </div>
+              <% }}} %>
+            </ul>
+            <h2>グループ編集</h2>
             <ul id="employee-list">
-              <% for (const employee of employees) { %>
+              <% var flag = false; %> <% for (const employee of employees) { %>
+              <% for (const member of members) { %> <% if(employee.employee_id
+              === member.employee_id) { flag = true; }%> <% } %>
               <div class="myrow">
                 <li>
                   <form
-                    action="/group_admin"
+                    action="/channels/groups/members"
                     method="post"
-                    id="delete-change-Employee-form"
+                    id="add-or-delete-member-form"
                     onsubmit="return beforeSubmit()"
                   >
                     <div class="row">
@@ -120,18 +145,27 @@
                       <div class="col-auto name"><%= employee.name %></div>
                     </div>
                     <div class="row">
-                      <% if (user.position_id === 1 || user.position === 2) {%>
                       <div class="col-auto">
+                        <% if(flag) { %>
                         <button
                           class="btn btn-secondary"
-                          id="change-position2"
-                          name="p_change"
+                          id="delete-group-member"
+                          name="g_del"
+                          value="<%= String(employee.employee_id) %>"
+                        >
+                          削除
+                        </button>
+                        <% flag = false; %> <% } else { %>
+                        <button
+                          class="btn btn-secondary"
+                          id="add-group-member"
+                          name="g_add"
                           value="<%= String(employee.employee_id) %>"
                         >
                           追加
                         </button>
+                        <% } %>
                       </div>
-                      <% } %>
                       <script>
                         function beforeSubmit() {
                           if (window.confirm("本当に変更しますか？")) {
