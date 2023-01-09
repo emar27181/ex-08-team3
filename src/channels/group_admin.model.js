@@ -15,7 +15,9 @@ const gadminModel = {
     const channels = await Group.findAll({
       where: { id: joinChannelsId },
     });
-    const employees = await Employee.findAll();
+    const employees = await Employee.findAll({
+      order: [["id", "asc"]],
+    });
     const chname = await Group.findOne({
       where: { id: req.params.id },
     });
