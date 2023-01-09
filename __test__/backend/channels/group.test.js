@@ -52,7 +52,7 @@ describe("Test the group path", () => {
   describe("GET /channels/group", () => {
     it("response status", async () => {
       expect.assertions(1);
-      const res = await testSession.get("/channels/groups/1");
+      const res = await testSession.get("/channels/groups/1/messages");
       expect(res.status).toStrictEqual(200);
     });
 

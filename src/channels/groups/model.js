@@ -8,6 +8,9 @@ const formatDate = require("../formatDate");
 const matchMyId = require("../matchMyId");
 
 const groupModel = {
+  redirectToGroupMessages: (req, res) => {
+    res.redirect(`/channels/groups/${req.params.id}/messages`);
+  },
   displayGruopPage: async (req, res) => {
     // ログインしているユーザーの取得
     const user = await Employee.findOne({
@@ -65,7 +68,7 @@ const groupModel = {
       });
     }
 
-    res.redirect(`/channels/groups/${req.params.id}`);
+    res.redirect(`/channels/groups/${req.params.id}/messages`);
   },
 };
 

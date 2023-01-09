@@ -43,18 +43,20 @@ describe("Test the login path", () => {
 
   it("get all page", async () => {
     expect.assertions(1);
-    await authenticatedSession.get("/channels/all").then((response) => {
-      expect(response.statusCode).toBe(200);
-    });
+    await authenticatedSession
+      .get("/channels/all/messages")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+      });
   });
 
   it("post message to all", async () => {
     const response = await authenticatedSession
-      .post("/channels/all")
+      .post("/channels/all/messages")
       .set("Content-Type", "application/x-www-form-urlencoded")
       .send({ content: "hogehoge" })
       .expect(302);
-    expect(response.text).toBe("Found. Redirecting to /channels/all");
+    expect(response.text).toBe("Found. Redirecting to /channels/all/messages");
     const messages = await AllMessage.findAll({
       where: {
         content: "hogehoge",

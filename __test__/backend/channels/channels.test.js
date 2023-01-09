@@ -53,7 +53,7 @@ describe("Test the channels path", () => {
     it("response redirect /channels/all", async () => {
       expect.assertions(1);
       const res = await testSession.get("/channels");
-      expect(res.header.location).toStrictEqual("/channels/all");
+      expect(res.header.location).toStrictEqual("/channels/all/messages");
     });
   });
 });

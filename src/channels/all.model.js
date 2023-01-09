@@ -47,7 +47,7 @@ const allModel = {
       content: reqData.content,
       EmployeeId: req.session.id,
     });
-    res.redirect("/channels/all");
+    res.redirect("/channels/all/messages");
   },
 
   displayAdmin: async (req, res) => {
@@ -65,7 +65,9 @@ const allModel = {
     const channels = await Group.findAll({
       where: { id: joinChannelsId },
     });
-    const employees = await Employee.findAll();
+    const employees = await Employee.findAll({
+      order: [["id", "asc"]],
+    });
     const formatedEmployees = [];
     for (const employee of employees) {
       const formatedEmployee = {

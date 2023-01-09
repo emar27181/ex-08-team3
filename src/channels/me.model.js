@@ -18,6 +18,7 @@ const meModel = {
     });
     await Employee.sync();
     const employees = await Employee.findAll({
+      order: [["id", "ASC"]],
       attributes: ["id", "name", "PositionId"],
       where: {
         id: {
