@@ -18,7 +18,6 @@ authRouter.post("/admin/involve", admin.addMember);
 authRouter.post("/admin", admin.editMember);
 authRouter.post("/mypage/edit/name", mypage.editName);
 authRouter.post("/mypage/edit/password", mypage.editPassword);
-authRouter.post("/channels/groups/members", gadmin.editGMember);
 
 authRouter.post("/login", async (req, res) => {
   const employee = req.body;
