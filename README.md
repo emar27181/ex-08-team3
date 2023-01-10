@@ -82,7 +82,7 @@
 
 左上のメニューボタンを押すことでメニューバーが表示され、他のチャットへ遷移することができます。
 
-<img src = "/uploads/8979ae5184cbe7146846132241d5ea7c/menuPage.png" width = "450">
+<img src = "/uploads/f9d280e143b27b303afa2b0cbf4bae5a/menuPage-re.png" width = "450">
 
 <br>
 
@@ -90,7 +90,7 @@
 
 右上のマイページボタンを押すことでマイページへ移動し、個人情報の確認/変更ができます。
 
-<img src = "/uploads/a764b5d5e636e55c190ca15c82021636/myPage.png" width = "450">
+<img src = "/uploads/a1ae22926b4ab269c705aedb9570d8f6/myPage-re.png" width = "450">
 
 <br>
 
