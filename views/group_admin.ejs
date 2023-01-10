@@ -128,7 +128,7 @@
               <div class="myrow">
                 <li>
                   <form
-                    action="/channels/groups/members"
+                    action="/channels/groups/<%= chname.id %>/members"
                     method="post"
                     id="add-or-delete-member-form"
                     onsubmit="return beforeSubmit()"
